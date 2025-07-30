@@ -20,13 +20,14 @@ const Qualification = () => {
             { threshold: 0.1 }
         );
 
-        if (qualificationRef.current) {
-            observer.observe(qualificationRef.current);
+        const target = qualificationRef.current;
+        if (target) {
+            observer.observe(target);
         }
 
         return () => {
-            if (qualificationRef.current) {
-                observer.unobserve(qualificationRef.current);
+            if (target) {
+                observer.unobserve(target);
             }
         };
     }, []);

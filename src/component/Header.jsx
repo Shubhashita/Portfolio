@@ -11,7 +11,6 @@ const Header = () => {
 
     // State to manage the toggle for the menu
     const [Toggle, showMenu] = useState(false);
-    const [activeNav, setActiveNav] = useState();
     return (
         <header className="header">
             <nav className="nav container">
