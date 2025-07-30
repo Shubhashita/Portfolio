@@ -38,18 +38,17 @@ export const projectsData = [
         title: "Date Picker",
         description: "Built a user-friendly date picker website allowing users to select and manage dates with customizable calendar views.",
         image: date,
-        technologies: ["React", "Javascript", "Tailwind CSS", "Firebase"],
-        demo: "https://social-dashboard-demo.netlify.app",
-        github: "https://github.com/username/social-dashboard"
+        technologies: ["React", "Javascript", "Tailwind CSS", "Railway"],
+        demo: "https://datepicker-production-4dc6.up.railway.app/",
+        github: "https://github.com/Shubhashita/Date_Picker"
     },
     {
         id: 5,
         title: "Portfolio Website",
         description: "A modern, responsive portfolio website showcasing projects and skills with smooth animations and interactive elements.",
         image: port,
-        technologies: ["React", "Javascript", "CSS3", "Firebase"],
-        // demo: "https://portfolio-demo.netlify.app",
-        github: ""
+        technologies: ["React", "Javascript", "CSS3", "Railway"],
+        github: "https://github.com/Shubhashita/Portfolio"
     },
 
 ];
