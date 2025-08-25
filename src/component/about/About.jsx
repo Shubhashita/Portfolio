@@ -1,7 +1,7 @@
 import React from 'react'
 import './about.css';
 import Info from './Info';
-import CV from '../../asset/CV.pdf';
+import CV from '../../asset/Shubhashita_Resume.pdf';
 import useInViewFade from './useInViewFade';
 
 const About = () => {

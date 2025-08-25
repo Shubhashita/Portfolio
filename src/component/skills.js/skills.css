@@ -1,7 +1,8 @@
 .skills__container {
-    grid-template-columns: repeat(2, 350px);
+    grid-template-columns: repeat(2, 1fr);
     column-gap: 3rem;
     justify-content: center;
+    align-items: stretch;
 }
 
 .skills__content {
@@ -9,7 +10,12 @@
     border: 1px solid rgba(0, 0, 0, 0.1);
     padding: 2rem 4rem;
     border-radius: 1.25rem;
-
+    width: 100%;
+    min-width: 250px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .skills__content:hover {
@@ -28,6 +34,7 @@
     display: flex;
     justify-content: center;
     column-gap: 2rem;
+    width: 100%;
 }
 
 .skills__group {
@@ -56,10 +63,14 @@
 /* For large devices */
 @media screen and (max-width: 992px) {
     .skills__container {
-        grid-template-columns: max-content;
+        grid-template-columns: 1fr;
         row-gap: 2rem;
     }
 
+    .skills__content {
+        width: 100%;
+        min-width: unset;
+    }
 }
 
 /* For medium devices */

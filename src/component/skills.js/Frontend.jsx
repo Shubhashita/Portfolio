@@ -10,7 +10,7 @@ const Frontend = () => {
                     <div className="skills__data">
                         <div>
                             <h3 className="skills__name">Languages</h3>
-                            <div className='skills__list'>
+                            <div className='skills__list skills__list-box'>
                                 <h4>HTML, CSS, JavaScript </h4>
                             </div>
                         </div>
@@ -18,7 +18,7 @@ const Frontend = () => {
                     <div className="skills__data">
                         <div>
                             <h3 className="skills__name">Frameworks</h3>
-                            <div className='skills__list'>
+                            <div className='skills__list skills__list-box'>
                                 <h4>React.js, BootStrap, jQuery, Material UI, Tailwind CSS</h4>
                             </div>
                         </div>
@@ -26,7 +26,7 @@ const Frontend = () => {
                     <div className="skills__data">
                         <div>
                             <h3 className="skills__name">Tools</h3>
-                            <div className='skills__list'>
+                            <div className='skills__list skills__list-box'>
                                 <h4>Vs Code</h4>
                             </div>
                         </div>

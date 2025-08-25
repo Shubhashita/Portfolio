@@ -1,17 +1,24 @@
 /*=============== PROJECTS ===============*/
 .projects__container {
-    grid-template-columns: repeat(2, max-content);
+    grid-template-columns: repeat(2, minmax(280px, 1fr));
     justify-content: center;
-    column-gap: 3rem;
-    padding-top: 1rem;
+    column-gap: 2rem;
+    row-gap: 2rem;
+    padding: 2rem 2rem 2rem 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    /* Ensures container doesn't overflow */
 }
 
 .projects__content {
     position: relative;
     border-radius: 1rem;
     overflow: hidden;
-    box-shadow: 0 4px 25px hsla(var(--hue), var(--sat), 15%, 0.15);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+    box-shadow: 0 2px 12px hsla(var(--hue), var(--sat), 15%, 0.08);
+    border: 1px solid hsla(var(--hue), var(--sat), 80%, 0.08);
+    background: var(--container-color, #fff);
+    transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s;
     transform: translateY(40px);
     opacity: 0;
 }
@@ -22,21 +29,24 @@
 }
 
 .projects__content:hover {
-    box-shadow: 0 6px 35px hsla(var(--hue), var(--sat), 15%, 0.2);
-    transform: translateY(-0.5rem);
+    box-shadow: 0 4px 18px hsla(var(--hue), var(--sat), 15%, 0.13);
+    transform: translateY(-0.25rem) scale(1.01);
+    border-color: hsla(var(--hue), var(--sat), 80%, 0.15);
 }
 
 .projects__img {
     position: relative;
     overflow: hidden;
+    background: #f8f8f8;
 }
 
 .projects__img img {
     width: 100%;
-    height: 250px;
+    height: 220px;
     object-fit: cover;
     border-radius: 1rem 1rem 0 0;
     transition: 0.3s;
+    display: block;
 }
 
 .projects__overlay {
@@ -95,8 +105,9 @@
 
 .projects__info {
     padding: 1.5rem;
-    background-color: var(--container-color);
+    background-color: var(--container-color, #fff);
     border-radius: 0 0 1rem 1rem;
+    border-top: 1px solid hsla(var(--hue), var(--sat), 80%, 0.06);
 }
 
 .projects__name {
@@ -128,27 +139,24 @@
 /* For large devices */
 @media screen and (max-width: 992px) {
     .projects__container {
-        grid-template-columns: max-content;
-        gap: 2rem;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 1.5rem;
+        max-width: 700px;
     }
-
     .projects__content {
-        max-width: 400px;
+        max-width: 100%;
     }
-
     .projects__img img {
-        height: 220px;
+        height: 180px;
     }
-
     .projects__overlay {
         padding: 1.25rem;
     }
-
     .projects__buttons {
         flex-direction: column;
         gap: 0.5rem;
     }
-
     .projects__button.button--small {
         padding: 0.65rem 0.85rem;
     }
@@ -158,33 +166,25 @@
 @media screen and (max-width: 768px) {
     .projects__container {
         grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-
-    .projects__content {
+        gap: 1rem;
+        padding: 1rem;
         max-width: 100%;
     }
-
     .projects__img img {
-        height: 200px;
+        height: 150px;
     }
-
     .projects__overlay {
         padding: 1rem;
     }
-
     .projects__title {
         font-size: var(--normal-font-size);
     }
-
     .projects__description {
         font-size: var(--smaller-font-size);
     }
-
     .projects__info {
         padding: 1.25rem;
     }
-
     .projects__name {
         font-size: var(--normal-font-size);
     }
@@ -193,35 +193,24 @@
 /* For small devices */
 @media screen and (max-width: 576px) {
     .projects__container {
-        padding: 0 1rem;
+        padding: 0 0.5rem;
     }
-
     .projects__img img {
-        height: 180px;
+        height: 120px;
     }
-
     .projects__overlay {
         padding: 0.75rem;
     }
-
-    /* .projects__buttons {
-        gap: 0.5rem;
-    } */
-
     .projects__button.button--small {
-        /* padding: 0.5rem 0.75rem; */
         font-size: var(--tiny-font-size);
     }
-
     .projects__button .button__icon {
         width: 16px;
         height: 16px;
     }
-
     .projects__info {
         padding: 1rem;
     }
-
     .projects__tech-item {
         padding: 0.2rem 0.5rem;
         font-size: var(--tiny-font-size);
@@ -231,17 +220,14 @@
 /* For extra small devices */
 @media screen and (max-width: 350px) {
     .projects__container {
-        padding: 0 0.5rem;
+        padding: 0 0.25rem;
     }
-
     .projects__img img {
-        height: 160px;
+        height: 90px;
     }
-
     .projects__title {
         font-size: var(--small-font-size);
     }
-
     .projects__name {
         font-size: var(--small-font-size);
     }

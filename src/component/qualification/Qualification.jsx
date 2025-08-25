@@ -48,10 +48,10 @@ const Qualification = () => {
                     <div className="qualification__content">
                         <div className={`qualification__data ${showData ? 'animate-left' : ''}`}>
                             <div>
-                                <h3 className="qualification__title">High School</h3>
-                                <span className="qualification__subtitle">Jeevan jyoti higher secondary school</span>
+                                <h3 className="qualification__title">Bachelor of Technology(IT) </h3>
+                                <span className="qualification__subtitle">Oriental Institute of science and technology, Bhopal </span>
                                 <div className="qualification__calendar">
-                                    <i className="uil uil-calendar-alt"></i>2018-2019
+                                    <i className="uil uil-calendar-alt"></i>2021-2025 
                                 </div>
                             </div>
 
@@ -81,10 +81,10 @@ const Qualification = () => {
 
                         <div className={`qualification__data ${showData ? 'animate-left' : ''}`}>
                             <div>
-                                <h3 className="qualification__title">Bachelor of Technology(IT)</h3>
-                                <span className="qualification__subtitle">Oriental Institute of science and technology, Bhopal</span>
+                                <h3 className="qualification__title">High School</h3>
+                                <span className="qualification__subtitle">Jeevan jyoti higher secondary school</span>
                                 <div className="qualification__calendar">
-                                    <i className="uil uil-calendar-alt"></i>2021-2025
+                                    <i className="uil uil-calendar-alt"></i>2018-2019
                                 </div>
                             </div>
 

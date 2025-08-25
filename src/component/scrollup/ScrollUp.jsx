@@ -24,4 +24,4 @@ const ScrollUp = () => {
     );
 };
 
-export default ScrollUp;
+export default ScrollUp;    
