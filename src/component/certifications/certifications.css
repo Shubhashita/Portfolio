@@ -1,0 +1,133 @@
+/*=============== CERTIFICATIONS ===============*/
+.certifications__container {
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 2rem;
+    row-gap: 2rem;
+    padding-bottom: 3rem;
+}
+
+.certifications__content {
+    background: var(--container-color);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 2rem;
+    border-radius: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.certifications__content:hover {
+    transform: translateY(-0.75rem);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+.certifications__icon-box {
+    width: 50px;
+    height: 50px;
+    background: var(--title-color);
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 1.5rem;
+    transition: 0.3s;
+}
+
+.certifications__content:hover .certifications__icon-box {
+    transform: rotate(10deg) scale(1.1);
+}
+
+.certifications__data {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.certifications__title {
+    font-size: var(--h3-font-size);
+    font-weight: 600;
+    color: var(--title-color);
+}
+
+.certifications__issuer {
+    font-size: var(--small-font-size);
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.certifications__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.certifications__date {
+    font-size: var(--smaller-font-size);
+    color: var(--text-color);
+    opacity: 0.8;
+}
+
+.certifications__button {
+    font-size: var(--smaller-font-size);
+    color: var(--title-color);
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    column-gap: 0.25rem;
+    transition: 0.3s;
+}
+
+.certifications__button:hover {
+    column-gap: 0.5rem;
+}
+
+.certifications__button-icon {
+    font-size: 1rem;
+}
+
+.fade-element {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/*=============== BREAKPOINTS ===============*/
+/* For large devices */
+@media screen and (max-width: 992px) {
+    .certifications__container {
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 1.5rem;
+    }
+}
+
+/* For medium devices */
+@media screen and (max-width: 768px) {
+    .certifications__container {
+        grid-template-columns: 1fr;
+        row-gap: 1.5rem;
+    }
+
+    .certifications__content {
+        padding: 1.5rem;
+    }
+}
+
+/* For small devices */
+@media screen and (max-width: 350px) {
+    .certifications__title {
+        font-size: var(--normal-font-size);
+    }
+}

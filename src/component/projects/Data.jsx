@@ -3,8 +3,8 @@ import quizImage from '../../asset/quiz .png';
 import AirIndia from '../../asset/Airindia.PNG';
 import AMS from '../../asset/AirlineManagementSystem.jar'
 import port from '../../asset/port.png';
-import date from '../../asset/date.png';
 import chat from '../../asset/chat.png'
+import todo from '../../asset/todo.png'
 
 export const projectsData = [
     {
@@ -12,18 +12,18 @@ export const projectsData = [
         title: "Hive Chat",
         description: "Developed a real-time chat application enabling instant messaging and seamless user interaction,Implemented cross-device compatibility.",
         image: chat,
-        technologies: ["React", "Node.js", "Socket.Io", "PostgreSQL"],
+        technologies: ["React", "Node.js", "Socket.Io", "MongoDB", "Cloudinary"],
         demo: "https://hivechat-client.onrender.com",
-        github: "https://github.com/Shubhashita/Chat"
+        github: "https://github.com/Shubhashita/hivechat-client"
     },
     {
         id: 2,
-        title: "Date Picker",
+        title: "SLATE",
         description: "Built a user-friendly date picker website allowing users to select and manage dates with customizable calendar views.",
-        image: date,
-        technologies: ["React", "Javascript", "Tailwind CSS", "Railway"],
-        demo: "https://datepicker-production-4dc6.up.railway.app/",
-        github: "https://github.com/Shubhashita/Date_Picker"
+        image: todo,
+        technologies: ["React", "Node.js", "Express.js", "Tailwind CSS", "MongoDB", "Cloudinary", "MinIO", "Docker"],
+        demo: "https://todo-board-frontend-beta.vercel.app/",
+        github: "https://github.com/Shubhashita/todo_board-frontend"
     },
     {
         id: 3,
@@ -45,7 +45,7 @@ export const projectsData = [
     },
     {
         id: 5,
-        title: "Portfolio Website",
+        title: "Portfolio",
         description: "A modern, responsive portfolio website showcasing projects and skills with smooth animations and interactive elements.",
         image: port,
         technologies: ["React", "Javascript", "CSS3", "Firebase"],

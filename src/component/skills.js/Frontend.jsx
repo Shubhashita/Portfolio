@@ -4,30 +4,27 @@ import './skills.css'
 const Frontend = () => {
     return (
         <div className="skills__content">
-            <h3 className="skills__title">Frontend Developer </h3>
+            <h3 className="skills__title">Frontend </h3>
             <div className="skills__box">
                 <div className="skills__group">
                     <div className="skills__data">
                         <div>
                             <h3 className="skills__name">Languages</h3>
-                            <div className='skills__list skills__list-box'>
-                                <h4>HTML, CSS, JavaScript </h4>
+                            <div className='skills__list'>
+                                <span className="skills__item">HTML</span>
+                                <span className="skills__item">CSS</span>
+                                <span className="skills__item">JavaScript</span>
                             </div>
                         </div>
                     </div>
                     <div className="skills__data">
                         <div>
-                            <h3 className="skills__name">Frameworks</h3>
-                            <div className='skills__list skills__list-box'>
-                                <h4>React.js, BootStrap, jQuery, Material UI, Tailwind CSS</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="skills__data">
-                        <div>
-                            <h3 className="skills__name">Tools</h3>
-                            <div className='skills__list skills__list-box'>
-                                <h4>Vs Code</h4>
+                            <h3 className="skills__name">Library/Frameworks</h3>
+                            <div className='skills__list'>
+                                <span className="skills__item">React.js</span>
+                                <span className="skills__item">Bootstrap</span>
+                                <span className="skills__item">jQuery</span>
+                                <span className="skills__item">Material UI</span>
                             </div>
                         </div>
                     </div>

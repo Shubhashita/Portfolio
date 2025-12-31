@@ -29,7 +29,7 @@ const About = () => {
 
 
                     <p ref={descRef}
-                        className={`about_description fade-element ${descVisible ? 'fade-in' : ''}`}>I'm a Full stack web developer with practical experience in developing web applications using technologies like HTML5, CSS3, Javascript, Reactjs, Nodejs, Express.js and PostgreSQL. Built multiple personal projects that demonstrate front-end and back-end integration, API handling, and responsive design. Familliar with Git for version control and comfortable working in collaborative environments. Quick to learn new tolls and focused on writing clean, maintainable code.</p>
+                        className={`about_description fade-element ${descVisible ? 'fade-in' : ''}`}>Backend developer with hands-on experience in Node.js, specializing in creating and integrating RESTful services. Adept at working with MongoDB and React, supported by a strong grasp of end-to-end development workflows. Able to seamlessly bridge server-side logic with interactive interfaces, ensuring smooth data flow and responsive user experiences. Committed to producing clean, reliable code and building solutions that are practical, scalable, and aligned with user needs.</p>
 
                     <div ref={btnRef}
                         className={`fade-element ${btnVisible ? 'fade-in' : ''}`}>

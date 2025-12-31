@@ -1,0 +1,44 @@
+.custom-cursor {
+    width: 8px;
+    height: 8px;
+    background-color: var(--title-color);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s, height 0.3s, background-color 0.3s;
+}
+
+.custom-cursor.hovered {
+    width: 0;
+    height: 0;
+}
+
+.custom-cursor-outline {
+    width: 30px;
+    height: 30px;
+    border: 2px solid var(--title-color);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.custom-cursor-outline.hovered {
+    width: 60px;
+    height: 60px;
+    background-color: var(--title-color);
+    opacity: 0.15;
+    border: none;
+}
+
+@media screen and (max-width: 992px) {
+
+    .custom-cursor,
+    .custom-cursor-outline {
+        display: none;
+    }
+}

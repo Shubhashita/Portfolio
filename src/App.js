@@ -6,6 +6,7 @@ import Home from "./component/home/Home.jsx";
 import About from "./component/about/About.jsx";
 import Skills from "./component/skills.js/Skills.jsx";
 import Qualification from "./component/qualification/Qualification.jsx";
+import Certifications from "./component/certifications/Certifications.jsx";
 import Projects from "./component/projects/Projects.jsx";
 import Contact from "./component/contact/Contact.jsx";
 import ScrollUp from "./component/scrollup/ScrollUp.jsx";
@@ -22,6 +23,7 @@ const App = () => {
         <About />
         <Skills />
         <Qualification />
+        <Certifications />
         <Projects />
         <Contact />
         <ScrollUp />
