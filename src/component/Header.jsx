@@ -1,70 +1,81 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./header.css";
 
+const navLinks = [
+    { href: "#home", label: "Home", icon: "uil-estate" },
+    { href: "#about", label: "About", icon: "uil-user" },
+    { href: "#skills", label: "Skills", icon: "uil-file-alt" },
+    { href: "#degree", label: "Academics", icon: "uil-graduation-cap" },
+    { href: "#certifications", label: "Certifications", icon: "uil-award" },
+    { href: "#projects", label: "Projects", icon: "uil-briefcase" },
+    { href: "#contact", label: "Contact", icon: "uil-message" },
+];
+
 const Header = () => {
-
-    // window.addEventListener("scroll", function () {
-    //     const header = document.querySelector(".header");
-    //     if (this.scrollY >= 80) header.classList.add("scroll-header");
-    //     else header.classList.remove("scroll-header");
-    // })
-
-    // State to manage the toggle for the menu
     const [Toggle, showMenu] = useState(false);
+    const [activeSection, setActiveSection] = useState("home");
+
+    // ── Scroll Spy via IntersectionObserver ──────────────────────────
+    useEffect(() => {
+        const sectionIds = navLinks.map((l) => l.href.replace("#", ""));
+
+        const observers = [];
+
+        sectionIds.forEach((id) => {
+            const el = document.getElementById(id);
+            if (!el) return;
+
+            const observer = new IntersectionObserver(
+                ([entry]) => {
+                    if (entry.isIntersecting) {
+                        setActiveSection(id);
+                    }
+                },
+                {
+                    // trigger when section is at least 30% visible; offset for fixed navbar
+                    rootMargin: "-10% 0px -60% 0px",
+                    threshold: 0,
+                }
+            );
+            observer.observe(el);
+            observers.push(observer);
+        });
+
+        return () => observers.forEach((o) => o.disconnect());
+    }, []);
+
     return (
         <header className="header">
             <nav className="nav container">
-                <a href="index.html" className="nav_logo">
+                {/* Brand logo */}
+                <a href="#home" className="nav_logo">
                     <img src="/logo_ss.png" alt="Shubhashita Singh" className="nav_logo-img" />
                 </a>
 
+                {/* Nav menu */}
                 <div className={Toggle ? "nav_menu show-menu" : "nav_menu"}>
                     <ul className="nav_list">
-                        <li className="nav_item">
-                            <a href="#home" className="nav_link">
-                                <i className="uil uil-estate nav__icon active-link"></i>Home
-                            </a>
-                        </li>
-
-                        <li className="nav_item">
-                            <a href="#about" className="nav_link">
-                                <i className="uil uil-user nav__icon"></i>About
-                            </a>
-                        </li>
-
-                        <li className="nav_item">
-                            <a href="#skills" className="nav_link">
-                                <i className="uil uil-file-alt nav__icon"></i>Skills
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#degree" className="nav_link">
-                                <i className="uil uil-graduation-cap nav__icon"></i>Academics
-                            </a>
-                        </li>
-
-                        <li className="nav_item">
-                            <a href="#certifications" className="nav_link">
-                                <i className="uil uil-award nav__icon"></i>Certifications
-                            </a>
-                        </li>
-
-                        <li className="nav_item">
-                            <a href="#projects" className="nav_link">
-                                <i className="uil uil-briefcase nav__icon"></i>Projects
-                            </a>
-                        </li>
-
-                        <li className="nav_item">
-                            <a href="#contact" className="nav_link">
-                                <i className="uil uil-message nav__icon"></i>Contact
-                            </a>
-                        </li>
+                        {navLinks.map(({ href, label, icon }) => {
+                            const id = href.replace("#", "");
+                            const isActive = activeSection === id;
+                            return (
+                                <li className="nav_item" key={id}>
+                                    <a
+                                        href={href}
+                                        className={`nav_link${isActive ? " active-link" : ""}`}
+                                        onClick={() => showMenu(false)}
+                                    >
+                                        <i className={`uil ${icon} nav__icon`}></i>
+                                        {label}
+                                    </a>
+                                </li>
+                            );
+                        })}
                     </ul>
-                    <i className="uil uil-times nav__close" onClick={() => showMenu(!Toggle)}></i>
+                    <i className="uil uil-times nav__close" onClick={() => showMenu(false)}></i>
                 </div>
 
+                {/* Hamburger toggle */}
                 <div className="nav__toggle" onClick={() => showMenu(!Toggle)}>
                     <i className="uil uil-apps"></i>
                 </div>
