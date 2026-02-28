@@ -8,7 +8,7 @@
 }
 
 .nav {
-    height: calc(var(--header-height) + 1.5rem);
+    height: 3.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -19,6 +19,23 @@
 .nav_toggle {
     color: var(--title-color);
     font-size: var(--font-medium);
+}
+
+.nav_logo {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    line-height: 0;
+}
+
+.nav_logo-img {
+    height: 34px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+    margin: 0;
+    padding: 0;
 }
 
 .nav_list {

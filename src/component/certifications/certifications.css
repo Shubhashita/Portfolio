@@ -1,98 +1,142 @@
 /*=============== CERTIFICATIONS ===============*/
 .certifications__container {
-    grid-template-columns: repeat(3, 1fr);
-    column-gap: 2rem;
-    row-gap: 2rem;
+    max-width: 680px;
+    margin: 0 auto;
     padding-bottom: 3rem;
-}
-
-.certifications__content {
-    background: var(--container-color);
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    padding: 2rem;
-    border-radius: 1.5rem;
     display: flex;
     flex-direction: column;
+    gap: 0;
+}
+
+/* ─── Each row ─── */
+.certifications__item {
+    display: flex;
+    align-items: flex-start;
     gap: 1.25rem;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 1.1rem 1rem 1.1rem 1.5rem;
     position: relative;
-    overflow: hidden;
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.certifications__content:hover {
-    transform: translateY(-0.75rem);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
-    border-color: rgba(0, 0, 0, 0.1);
-}
-
-.certifications__icon-box {
-    width: 50px;
-    height: 50px;
+/* left vertical accent line */
+.certifications__item::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 2px;
+    height: 100%;
     background: var(--title-color);
-    border-radius: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    font-size: 1.5rem;
-    transition: 0.3s;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.certifications__content:hover .certifications__icon-box {
-    transform: rotate(10deg) scale(1.1);
+.certifications__item:hover::before {
+    transform: scaleY(1);
 }
 
-.certifications__data {
+.certifications__item:hover {
+    transform: translateX(8px);
+}
+
+/* subtle separator between rows */
+.certifications__item+.certifications__item {
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* ─── Diamond bullet (matches skills__bullet) ─── */
+.certifications__bullet {
+    width: 8px;
+    height: 8px;
+    background: var(--title-color);
+    border-radius: 1px;
+    transform: rotate(45deg);
+    flex-shrink: 0;
+    margin-top: 0.45rem;
+    opacity: 0.75;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.certifications__item:hover .certifications__bullet {
+    opacity: 1;
+    transform: rotate(45deg) scale(1.3);
+}
+
+/* ─── Text group ─── */
+.certifications__info {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.3rem;
+    flex: 1;
 }
 
 .certifications__title {
-    font-size: var(--h3-font-size);
+    font-size: var(--normal-font-size);
     font-weight: 600;
     color: var(--title-color);
+    line-height: 1.3;
+}
+
+/* ─── Meta row: issuer chip + date ─── */
+.certifications__meta {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    flex-wrap: wrap;
 }
 
 .certifications__issuer {
-    font-size: var(--small-font-size);
-    color: var(--text-color);
+    font-size: var(--smaller-font-size);
     font-weight: 500;
+    color: var(--text-color);
+    background: rgba(0, 0, 0, 0.05);
+    padding: 0.18rem 0.65rem;
+    border-radius: 0.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
-.certifications__footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 0.5rem;
-    padding-top: 1rem;
-    border-top: 1px solid rgba(0, 0, 0, 0.05);
+.certifications__item:hover .certifications__issuer {
+    background: var(--title-color);
+    color: #fff;
+    border-color: var(--title-color);
 }
 
 .certifications__date {
     font-size: var(--smaller-font-size);
     color: var(--text-color);
-    opacity: 0.8;
+    opacity: 0.65;
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
 }
 
-.certifications__button {
+/* ─── View link ─── */
+.certifications__link {
     font-size: var(--smaller-font-size);
-    color: var(--title-color);
     font-weight: 500;
+    color: var(--title-color);
     display: inline-flex;
     align-items: center;
-    column-gap: 0.25rem;
-    transition: 0.3s;
+    gap: 0.2rem;
+    flex-shrink: 0;
+    align-self: center;
+    opacity: 0;
+    transform: translateX(-6px);
+    transition: opacity 0.25s ease, transform 0.25s ease, gap 0.25s ease;
 }
 
-.certifications__button:hover {
-    column-gap: 0.5rem;
+.certifications__item:hover .certifications__link {
+    opacity: 1;
+    transform: translateX(0);
 }
 
-.certifications__button-icon {
-    font-size: 1rem;
+.certifications__link:hover {
+    gap: 0.45rem;
 }
 
+/*=============== FADE ANIMATION ===============*/
 .fade-element {
     opacity: 0;
     transform: translateY(30px);
@@ -105,29 +149,24 @@
 }
 
 /*=============== BREAKPOINTS ===============*/
-/* For large devices */
-@media screen and (max-width: 992px) {
-    .certifications__container {
-        grid-template-columns: repeat(2, 1fr);
-        column-gap: 1.5rem;
-    }
-}
-
-/* For medium devices */
 @media screen and (max-width: 768px) {
     .certifications__container {
-        grid-template-columns: 1fr;
-        row-gap: 1.5rem;
+        margin-left: var(--mb-0-75);
+        margin-right: var(--mb-0-75);
     }
 
-    .certifications__content {
-        padding: 1.5rem;
+    .certifications__item {
+        padding: 0.9rem 0.75rem 0.9rem 1.25rem;
+    }
+
+    .certifications__link {
+        opacity: 1;
+        transform: none;
     }
 }
 
-/* For small devices */
 @media screen and (max-width: 350px) {
     .certifications__title {
-        font-size: var(--normal-font-size);
+        font-size: var(--small-font-size);
     }
 }
