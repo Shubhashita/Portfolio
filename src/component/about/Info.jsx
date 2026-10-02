@@ -1,27 +1,34 @@
-import React from 'react'
+import React from 'react';
+import { Stagger, StaggerItem } from '../motion/Reveal';
 
-const Info = () => {
-    return (
-        <div className="about__info grid">
-            <div className="about about__box">
-                <i class='bx  bx-award'  ></i>
-                <h3 className="about__title">Experience</h3>
-                <span className="about__subtitle">Fresher</span>
-            </div>
+const boxes = [
+    {
+        icon: 'bx-award',
+        title: 'Experience',
+        subtitle: '+1 Year',
+    },
+    {
+        icon: 'bx-briefcase-alt',
+        title: 'Completed',
+        subtitle: '5 + Projects',
+    },
+    {
+        icon: 'bx-briefcase',
+        title: 'Professional',
+        subtitle: 'Open to work',
+    },
+];
 
-            <div className="about about__box">
-                <i class='bx  bx-briefcase-alt'  ></i>
-                <h3 className="about__title">Completed</h3>
-                <span className="about__subtitle">5 + Projects</span>
-            </div>
+const Info = () => (
+    <Stagger className="about__info grid" staggerChildren={0.14} delayChildren={0.05}>
+        {boxes.map((box) => (
+            <StaggerItem key={box.title} className="about about__box" variant="scale">
+                <i className={`bx ${box.icon}`}></i>
+                <h3 className="about__title">{box.title}</h3>
+                <span className="about__subtitle">{box.subtitle}</span>
+            </StaggerItem>
+        ))}
+    </Stagger>
+);
 
-            <div className="about about__box">
-                <i class='bx  bx-briefcase' ></i>
-                <h3 className="about__title">Professional</h3>
-                <span className="about__subtitle">Open to work</span>
-            </div>
-        </div>
-    )
-}
-
-export default Info
+export default Info;

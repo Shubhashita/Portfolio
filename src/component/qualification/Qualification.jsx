@@ -1,104 +1,114 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React from 'react';
 import './qualification.css';
+import SectionHeading from '../motion/SectionHeading';
+import { motion } from 'framer-motion';
+
+const ease = [0.22, 1, 0.36, 1];
+
+const education = [
+    {
+        title: 'Bachelor of Technology(IT)',
+        subtitle: 'Oriental Institute of science and technology, Bhopal',
+        calendar: '2021-2025',
+        side: 'left',
+    },
+    {
+        title: 'Intermediate',
+        subtitle: 'Jeevan jyoti higher secondary school',
+        calendar: '2020-2021',
+        side: 'right',
+    },
+    {
+        title: 'High School',
+        subtitle: 'Jeevan jyoti higher secondary school',
+        calendar: '2018-2019',
+        side: 'left',
+    },
+];
 
 const Qualification = () => {
-    const [isVisible, setIsVisible] = useState(false);
-    const [showData, setShowData] = useState(false);
-    const qualificationRef = useRef(null);
-
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) {
-                    setIsVisible(true);
-                    // Show data items after section title animation completes
-                    setTimeout(() => {
-                        setShowData(true);
-                    }, 800);
-                }
-            },
-            { threshold: 0.1 }
-        );
-
-        const target = qualificationRef.current;
-        if (target) {
-            observer.observe(target);
-        }
-
-        return () => {
-            if (target) {
-                observer.unobserve(target);
-            }
-        };
-    }, []);
     return (
-        <section ref={qualificationRef}
-            className={`qualification section ${isVisible ? 'fade-in' : ''}`} id='degree'>
-            <h2 className="section__title">Qualification</h2>
-            <span className="section__subtitle">My Educational Background</span>
+        <section className="qualification section" id="degree">
+            <SectionHeading title="Qualification" subtitle="My Educational Background" />
 
             <div className="qualification__container container">
-                <div className="qualification__tabs">
+                <motion.div
+                    className="qualification__tabs"
+                    initial={{ opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, ease }}
+                >
                     <div className="qualification__button button--flex">
-                        <i className="uil uil-graduation-cap qualification__icon"></i>Education
+                        <i className="uil uil-graduation-cap qualification__icon"></i>
+                        Education
                     </div>
-                </div>
+                </motion.div>
 
                 <div className="qualification__sections">
                     <div className="qualification__content">
-                        <div className={`qualification__data ${showData ? 'animate-left' : ''}`}>
-                            <div>
-                                <h3 className="qualification__title">Bachelor of Technology(IT) </h3>
-                                <span className="qualification__subtitle">Oriental Institute of science and technology, Bhopal </span>
-                                <div className="qualification__calendar">
-                                    <i className="uil uil-calendar-alt"></i>2021-2025 
-                                </div>
-                            </div>
-
-                            <div>
-                                <span className="qualification__rounder"></span>
-                                <span className="qualification__line"></span>
-
-                            </div>
-                        </div>
-
-                        <div className={`qualification__data ${showData ? 'animate-right' : ''}`}>
-                            <div></div>
-
-                            <div>
-                                <span className="qualification__rounder"></span>
-                                <span className="qualification__line"></span>
-
-                            </div>
-                            <div>
-                                <h3 className="qualification__title">Intermediate</h3>
-                                <span className="qualification__subtitle">Jeevan jyoti higher secondary school</span>
-                                <div className="qualification__calendar">
-                                    <i className="uil uil-calendar-alt"></i>2020-2021
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className={`qualification__data ${showData ? 'animate-left' : ''}`}>
-                            <div>
-                                <h3 className="qualification__title">High School</h3>
-                                <span className="qualification__subtitle">Jeevan jyoti higher secondary school</span>
-                                <div className="qualification__calendar">
-                                    <i className="uil uil-calendar-alt"></i>2018-2019
-                                </div>
-                            </div>
-
-                            <div>
-                                <span className="qualification__rounder"></span>
-                                <span className="qualification__line"></span>
-
-                            </div>
-                        </div>
+                        {education.map((item, index) => {
+                            const isLeft = item.side === 'left';
+                            return (
+                                <motion.div
+                                    key={item.title}
+                                    className="qualification__data"
+                                    initial={{
+                                        opacity: 0,
+                                        x: isLeft ? -56 : 56,
+                                    }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    viewport={{ once: true, amount: 0.35 }}
+                                    transition={{
+                                        duration: 0.65,
+                                        delay: index * 0.12,
+                                        ease,
+                                    }}
+                                >
+                                    {isLeft ? (
+                                        <>
+                                            <div>
+                                                <h3 className="qualification__title">{item.title}</h3>
+                                                <span className="qualification__subtitle">
+                                                    {item.subtitle}
+                                                </span>
+                                                <div className="qualification__calendar">
+                                                    <i className="uil uil-calendar-alt"></i>
+                                                    {item.calendar}
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <span className="qualification__rounder"></span>
+                                                <span className="qualification__line"></span>
+                                            </div>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <div></div>
+                                            <div>
+                                                <span className="qualification__rounder"></span>
+                                                <span className="qualification__line"></span>
+                                            </div>
+                                            <div>
+                                                <h3 className="qualification__title">{item.title}</h3>
+                                                <span className="qualification__subtitle">
+                                                    {item.subtitle}
+                                                </span>
+                                                <div className="qualification__calendar">
+                                                    <i className="uil uil-calendar-alt"></i>
+                                                    {item.calendar}
+                                                </div>
+                                            </div>
+                                        </>
+                                    )}
+                                </motion.div>
+                            );
+                        })}
                     </div>
                 </div>
             </div>
         </section>
-    )
-}
+    );
+};
 
-export default Qualification
+export default Qualification;

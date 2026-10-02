@@ -1,16 +1,16 @@
 // Project data for portfolio
 import quizImage from '../../asset/quiz .png';
 import AirIndia from '../../asset/Airindia.PNG';
-import AMS from '../../asset/AirlineManagementSystem.jar'
+import AMS from '../../asset/AirlineManagementSystem.jar';
 import port from '../../asset/port.png';
-import chat from '../../asset/chat.png'
-import todo from '../../asset/todo.png'
+import chat from '../../asset/hivechat.png';
+import todo from '../../asset/todo.png';
 
 export const projectsData = [
     {
         id: 1,
         title: "Hive Chat",
-        description: "Developed a real-time chat application enabling instant messaging and seamless user interaction,Implemented cross-device compatibility.",
+        description: "Real-time chat app with instant messaging, media sharing, and seamless cross-device conversations.",
         image: chat,
         technologies: ["React", "Node.js", "Socket.Io", "MongoDB", "Cloudinary"],
         demo: "https://hivechat-client.onrender.com",
@@ -19,7 +19,7 @@ export const projectsData = [
     {
         id: 2,
         title: "SLATE",
-        description: "Built a user-friendly date picker website allowing users to select and manage dates with customizable calendar views.",
+        description: "Collaborative task board with customizable views for planning, organizing, and tracking work.",
         image: todo,
         technologies: ["React", "Node.js", "Express.js", "Tailwind CSS", "MongoDB", "Cloudinary", "MinIO", "Docker"],
         demo: "https://todo-board-frontend-beta.vercel.app/",
@@ -28,7 +28,7 @@ export const projectsData = [
     {
         id: 3,
         title: "QuizQuest",
-        description: "Developed a dynamic quiz website enabling users to take, create, and evaluate quizzes in real-time. ",
+        description: "Dynamic quiz platform where users create, take, and evaluate quizzes in real time.",
         image: quizImage,
         technologies: ["HTML", "CSS", "JavaScript", "Firebase"],
         demo: "https://quizquest-381dc.web.app",
@@ -37,7 +37,7 @@ export const projectsData = [
     {
         id: 4,
         title: "Airline Management System",
-        description: "Designed comprehensive Airline Management System to automate flight scheduling, reservations, ticketing. ",
+        description: "Desktop system for flight scheduling, reservations, and ticketing with a MySQL-backed workflow.",
         image: AirIndia,
         technologies: ["Java", "Java Swing", "MySQL", "MySQL Workbench"],
         demo: AMS,
@@ -46,12 +46,9 @@ export const projectsData = [
     {
         id: 5,
         title: "Portfolio",
-        description: "A modern, responsive portfolio website showcasing projects and skills with smooth animations and interactive elements.",
+        description: "Responsive personal site showcasing projects and skills with smooth motion and clean interaction.",
         image: port,
         technologies: ["React", "Javascript", "CSS3", "Firebase"],
         github: "https://github.com/Shubhashita/Portfolio"
     },
-
 ];
-
-// cdsyfvrygv com
