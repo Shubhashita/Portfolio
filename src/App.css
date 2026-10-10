@@ -82,20 +82,7 @@ textarea {
   font-size: var(--normal-font-size);
 }
 
-@media (pointer: fine) and (min-width: 993px) {
-  body {
-    cursor: none;
-  }
 
-  a,
-  button,
-  .button,
-  .projects__btn,
-  .nav_link,
-  .skills__item {
-    cursor: none;
-  }
-}
 
 @media (prefers-reduced-motion: reduce) {
   html {

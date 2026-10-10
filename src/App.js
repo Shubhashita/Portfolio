@@ -11,7 +11,6 @@ import Certifications from './component/certifications/Certifications.jsx';
 import Projects from './component/projects/Projects.jsx';
 import Contact from './component/contact/Contact.jsx';
 import ScrollUp from './component/scrollup/ScrollUp.jsx';
-import Cursor from './component/cursor/Cursor.jsx';
 import ScrollProgress from './component/motion/ScrollProgress.jsx';
 import useLenis from './hooks/useLenis';
 import { motion } from 'framer-motion';
@@ -22,8 +21,6 @@ const App = () => {
   return (
     <>
       <ScrollProgress />
-      <Cursor />
-
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
