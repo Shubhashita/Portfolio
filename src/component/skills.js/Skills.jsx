@@ -32,15 +32,15 @@ const skillsData = [
 ];
 
 const chipVariants = {
-    hidden: { opacity: 0, y: 12, scale: 0.92 },
+    hidden: { scale: 0, opacity: 0 },
     visible: (i) => ({
-        opacity: 1,
-        y: 0,
         scale: 1,
+        opacity: 1,
         transition: {
-            delay: 0.08 + i * 0.035,
-            duration: 0.4,
-            ease: [0.22, 1, 0.36, 1],
+            delay: 0.12 + i * 0.045,
+            type: "spring",
+            stiffness: 340,
+            damping: 20,
         },
     }),
 };
@@ -60,7 +60,7 @@ const SkillCategory = ({ item }) => (
                     variants={chipVariants}
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true, amount: 0.4 }}
+                    viewport={{ once: true, amount: 0.2 }}
                     whileHover={{ y: -3, scale: 1.05 }}
                 >
                     {skill}

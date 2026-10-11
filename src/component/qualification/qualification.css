@@ -65,16 +65,17 @@
     display: inline-block;
     width: 13px;
     height: 13px;
-    background-color: var(--text-color);
+    background-color: var(--accent-cream);
+    box-shadow: 0 0 8px rgba(229, 222, 210, 0.4);
     border-radius: 50%;
 }
 
 .qualification__line {
     display: block;
-    width: 1px;
+    width: 2px;
     height: 100%;
-    background-color: var(--text-color);
-    transform: translate(6px, -7px);
+    background-color: rgba(229, 222, 210, 0.25);
+    transform: translate(5.5px, -7px);
 }
 
 /* For large devices */

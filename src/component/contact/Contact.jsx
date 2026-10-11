@@ -37,7 +37,7 @@ const Contact = () => {
                     <h3 className="contact__title">Talk to me</h3>
 
                     <div className="contact__info">
-                        <div className="contact__card">
+                        <div className="contact__card edge-beam">
                             <i className="bx bx-mail-send contact__card-icon"></i>
                             <h3 className="contact__card-title">Email</h3>
                             <span className="contact__card-data">
@@ -45,7 +45,7 @@ const Contact = () => {
                             </span>
                         </div>
 
-                        <div className="contact__card">
+                        <div className="contact__card edge-beam">
                             <i className="bx bxl-linkedin contact__card-icon"></i>
                             <h3 className="contact__card-title">Linkedin</h3>
                             <span className="contact__card-data">
@@ -53,7 +53,7 @@ const Contact = () => {
                             </span>
                         </div>
 
-                        <div className="contact__card">
+                        <div className="contact__card edge-beam">
                             <i className="bx bxl-github contact__card-icon"></i>
                             <h3 className="contact__card-title">GitHub</h3>
                             <span className="contact__card-data">

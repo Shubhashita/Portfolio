@@ -22,7 +22,7 @@ const boxes = [
 const Info = () => (
     <Stagger className="about__info grid" staggerChildren={0.14} delayChildren={0.05}>
         {boxes.map((box) => (
-            <StaggerItem key={box.title} className="about about__box" variant="scale">
+            <StaggerItem key={box.title} className="about about__box edge-beam" variant="scale">
                 <i className={`bx ${box.icon}`}></i>
                 <h3 className="about__title">{box.title}</h3>
                 <span className="about__subtitle">{box.subtitle}</span>

@@ -5,14 +5,23 @@
   --header-height: 3rem;
 
   /*========== Colors ==========*/
-  /*Color mode HSL(hue, saturation, lightness)*/
-  --hue: 0;
-  --sat: 0%;
-  --title-color: hsl(var(--hue), var(--sat), 20%);
-  --title-color-dark: hsl(var(--hue), var(--sat), 0%);
-  --text-color: hsl(var(--hue), var(--sat), 46%);
-  --body-color: hsl(var(--hue), var(--sat), 98%);
-  --container-color: #fff;
+  /* Custom Slate & Sand Theme Palette */
+  --body-color: #1e242b;
+  --container-color: #27303a;
+  --container-color-alt: #313c48;
+  --card-hover-color: #384553;
+  
+  --title-color: #e5ded2;
+  --title-color-dark: #f0ece3;
+  --text-color: #9aa8b7;
+  --text-color-muted: #728091;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-color-hover: rgba(229, 222, 210, 0.3);
+  
+  --accent-cream: #e5ded2;
+  --accent-cream-hover: #d5cbbe;
+  --accent-slate: #546678;
+  --accent-slate-light: #6a7d91;
 
   /*========== Font and typography ==========*/
   --body-font: "Poppins", sans-serif;
@@ -72,6 +81,8 @@
 html {
   /* Lenis handles smooth scrolling */
   scroll-behavior: auto;
+  overflow-x: hidden;
+  max-width: 100vw;
 }
 
 body,
@@ -81,8 +92,6 @@ textarea {
   font-family: var(--body-font);
   font-size: var(--normal-font-size);
 }
-
-
 
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -102,6 +111,13 @@ body {
   background-color: var(--body-color);
   color: var(--text-color);
   overflow-x: hidden;
+  max-width: 100vw;
+  position: relative;
+}
+
+.main {
+  overflow-x: hidden;
+  width: 100%;
 }
 
 /* Background Blobs */
@@ -118,11 +134,11 @@ body {
 
 .blob {
   position: absolute;
-  width: 400px;
-  height: 400px;
-  background: var(--title-color);
-  filter: blur(120px);
-  opacity: 0.05;
+  width: 450px;
+  height: 450px;
+  background: var(--accent-slate);
+  filter: blur(140px);
+  opacity: 0.12;
   border-radius: 50%;
   animation: blob-float 20s infinite alternate;
 }
@@ -136,10 +152,11 @@ body {
 .blob-2 {
   bottom: -10%;
   right: -10%;
-  width: 500px;
-  height: 500px;
+  width: 550px;
+  height: 550px;
+  background: var(--accent-cream);
   animation-delay: -5s;
-  opacity: 0.03;
+  opacity: 0.05;
 }
 
 @keyframes blob-float {
@@ -223,15 +240,21 @@ img {
 /*=============== BUTTONS ===============*/
 .button {
   display: inline-block;
-  background-color: var(--title-color);
-  color: var(--container-color);
-  padding: 1.25rem 2rem;
-  border-radius: 1rem;
-  font-weight: var(--font-medium);
+  background-color: var(--accent-cream);
+  color: #1a2026;
+  padding: 1.1rem 2.2rem;
+  border-radius: 0.9rem;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .button:hover {
-  background-color: var(--title-color-dark);
+  background-color: var(--accent-cream-hover);
+  color: #14181d;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
 }
 
 .button__icon {
@@ -243,10 +266,91 @@ img {
   align-items: center;
 }
 
+/*=============== EDGE BEAM HOVER EFFECT ===============*/
+@property --beam-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes beam-spin {
+  to {
+    --beam-angle: 360deg;
+  }
+}
+
+.edge-beam {
+  --beam-color-1: rgba(229, 222, 210, 0.15);
+  --beam-color-2: #d5cbbe;
+  --beam-color-3: #ffffff;
+  --beam-color-4: #e5ded2;
+  --beam-color-5: rgba(229, 222, 210, 0.2);
+  --beam-glow-1: rgba(229, 222, 210, 0.8);
+  --beam-glow-2: rgba(229, 222, 210, 0.4);
+  position: relative;
+  isolation: isolate;
+}
+
+/* Memex electric cyan/blue beam variant */
+.edge-beam--cyan {
+  --beam-color-1: rgba(56, 189, 248, 0.15);
+  --beam-color-2: #38bdf8;
+  --beam-color-3: #ffffff;
+  --beam-color-4: #3b82f6;
+  --beam-color-5: rgba(59, 130, 246, 0.2);
+  --beam-glow-1: rgba(56, 189, 248, 0.85);
+  --beam-glow-2: rgba(59, 130, 246, 0.45);
+}
+
+.edge-beam::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 2px;
+  background: conic-gradient(
+    from var(--beam-angle),
+    transparent 0%,
+    transparent 38%,
+    var(--beam-color-1) 42%,
+    var(--beam-color-2) 48%,
+    var(--beam-color-3) 50%,
+    var(--beam-color-4) 52%,
+    var(--beam-color-5) 58%,
+    transparent 62%,
+    transparent 100%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+  z-index: 5;
+  animation: beam-spin 2.8s linear infinite paused;
+  filter: drop-shadow(0 0 6px var(--beam-glow-1)) drop-shadow(0 0 14px var(--beam-glow-2));
+}
+
+.edge-beam:hover::after,
+.edge-beam:focus-within::after {
+  opacity: 1;
+  animation-play-state: running;
+}
+
+@media (hover: none) {
+  .edge-beam::after {
+    opacity: 0.85;
+    animation-play-state: running;
+  }
+}
+
 /*=============== BREAKPOINTS ===============*/
 /* For large devices */
 @media screen and (max-width: 992px) {
   .container {
+    max-width: 100%;
+    width: auto;
     margin-left: var(--mb-1-5);
     margin-right: var(--mb-1-5);
   }

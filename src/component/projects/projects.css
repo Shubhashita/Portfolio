@@ -15,97 +15,126 @@
 }
 
 .projects__container {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    justify-content: center;
-    align-items: stretch;
-    padding-bottom: 3rem;
-}
-
-/* ----- Card ----- */
-.projects__card {
-    background: var(--container-color);
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 1.5rem;
-    padding: 1.25rem 1.25rem 1.75rem;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
+    gap: 2rem;
+    max-width: 960px;
+    width: 100%;
+    margin: 0 auto;
+    padding-bottom: 3.5rem;
+}
+
+/* ----- Project Row Card ----- */
+.projects__card {
+    background: var(--container-color);
+    border: 1px solid var(--border-color);
+    border-radius: 1.75rem;
+    padding: 2rem 2.25rem;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    column-gap: 2.75rem;
     position: relative;
-    overflow: hidden;
+    isolation: isolate;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     transition:
-        transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-        box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+        transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1),
         border-color 0.4s ease;
 }
 
-.projects__card::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 3px;
-    height: 100%;
-    background: var(--title-color);
-    transform: scaleY(0);
-    transform-origin: top;
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 2;
-}
-
 .projects__card:hover {
-    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
-    border-color: rgba(0, 0, 0, 0.16);
+    box-shadow: 0 16px 45px rgba(0, 0, 0, 0.45);
+    border-color: var(--border-color-hover);
 }
 
-.projects__card:hover::before {
-    transform: scaleY(1);
+/* ----- Left Column: Image Box + Skills List ----- */
+.projects__left {
+    display: flex;
+    flex-direction: column;
+    gap: 1.15rem;
 }
 
-/* ----- Image: full screenshot, never cropped ----- */
 .projects__img-box {
     width: 100%;
-    height: 280px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1.1rem;
-    border-radius: 1.25rem;
+    height: 155px;
+    display: block;
+    padding: 0;
+    border-radius: 1rem;
     overflow: hidden;
-    margin-bottom: 1.5rem;
-    background:
-        radial-gradient(circle at 30% 20%, rgba(0, 0, 0, 0.03), transparent 55%),
-        linear-gradient(160deg, hsl(0, 0%, 96%) 0%, hsl(0, 0%, 92%) 100%);
-    border: 1px solid rgba(0, 0, 0, 0.06);
+    background: transparent;
+    border: 1px solid var(--border-color);
+    transition: border-color 0.3s ease;
+}
+
+.projects__card:hover .projects__img-box {
+    border-color: rgba(229, 222, 210, 0.3);
 }
 
 .projects__img {
-    max-width: 100%;
-    max-height: 100%;
-    width: auto;
-    height: auto;
-    object-fit: contain;
+    --img-scale: 1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     object-position: center;
     display: block;
-    border-radius: 0.65rem;
-    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
-    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-                box-shadow 0.45s ease;
+    border-radius: 1rem;
+    transform: scale(var(--img-scale));
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .projects__card:hover .projects__img {
-    transform: scale(1.03);
-    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.16);
+    transform: scale(calc(var(--img-scale) * 1.05));
 }
 
-/* ----- Title ----- */
-.projects__title {
-    font-size: var(--h3-font-size);
-    font-weight: var(--font-semi-bold);
+/* Skills list under image */
+.projects__skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    align-items: center;
+}
+
+.projects__skill-tag {
+    font-size: 0.75rem;
+    font-weight: 500;
     color: var(--title-color);
-    margin-bottom: 1.25rem;
-    line-height: 1.35;
+    background: #1c222a;
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    border: 1px solid var(--border-color);
+    transition: background 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+}
+
+.projects__card:hover .projects__skill-tag {
+    border-color: rgba(229, 222, 210, 0.2);
+}
+
+.projects__skill-tag:hover {
+    background: var(--accent-slate);
+    color: #fff;
+    transform: translateY(-1px);
+}
+
+/* ----- Right Column: Title, Description, and Bottom Icons ----- */
+.projects__right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100%;
+}
+
+.projects__content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+}
+
+.projects__title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--title-color);
+    letter-spacing: -0.01em;
+    line-height: 1.3;
     transition: color 0.3s ease;
 }
 
@@ -113,77 +142,194 @@
     color: var(--title-color-dark);
 }
 
-/* ----- Buttons ----- */
-.projects__btns {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.75rem;
-    width: 100%;
-    margin-top: auto;
+.projects__description {
+    font-size: var(--normal-font-size);
+    color: var(--text-color);
+    line-height: 1.7;
+    margin: 0;
 }
 
-.projects__btn {
+/* Action Icons (GitHub & Open Link - unboxed, left-aligned) */
+.projects__actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+    padding-top: 0.5rem;
+}
+
+.projects__action-icon-link {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-width: 7.5rem;
-    padding: 0.7rem 1.35rem;
-    font-size: var(--small-font-size);
-    font-weight: var(--font-medium);
     color: var(--title-color);
-    background: var(--container-color);
-    border: 1px solid rgba(0, 0, 0, 0.14);
-    border-radius: 2rem;
-    transition:
-        background 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-        color 0.3s ease,
-        border-color 0.3s ease,
-        transform 0.3s ease;
+    font-size: 1.65rem;
+    text-decoration: none;
+    transition: color 0.25s ease;
+    cursor: pointer;
+    transform: none !important;
 }
 
-.projects__btn:hover {
-    background: var(--title-color-dark);
-    color: #fff;
-    border-color: var(--title-color-dark);
-    transform: translateY(-2px);
+.projects__action-icon-link:hover {
+    color: var(--title-color-dark);
+    transform: none !important;
 }
 
-/*=============== BREAKPOINTS ===============*/
-@media screen and (max-width: 992px) {
+/*=============== RESPONSIVE BREAKPOINTS ===============*/
+/* Tablets and small laptops */
+@media screen and (max-width: 900px) {
     .projects__container {
-        grid-template-columns: repeat(2, 1fr);
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
         gap: 1.75rem;
     }
 
+    .projects__card {
+        grid-template-columns: 240px 1fr;
+        column-gap: 2rem;
+        padding: 1.75rem;
+    }
+
     .projects__img-box {
-        height: 260px;
+        height: 150px;
+    }
+
+    .projects__title {
+        font-size: 1.35rem;
     }
 }
 
-@media screen and (max-width: 576px) {
+/* Mobile Devices (Tablets/Phones <= 768px) */
+@media screen and (max-width: 768px) {
     .projects__container {
-        grid-template-columns: 1fr;
-        max-width: 380px;
-        margin-left: auto;
-        margin-right: auto;
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
         gap: 1.5rem;
+        padding-bottom: 2.5rem;
     }
 
     .projects__card {
-        padding: 1rem 1rem 1.5rem;
-        border-radius: 1.25rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+        padding: 1.35rem 1.2rem;
+        border-radius: 1.35rem;
+        box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
+    }
+
+    /* Unroll columns into a single logical vertical flow:
+       1. Image Preview
+       2. Title & Description
+       3. Tech Stack Tags
+       4. Action Links */
+    .projects__left {
+        display: contents;
+    }
+
+    .projects__right {
+        display: contents;
     }
 
     .projects__img-box {
-        height: 300px;
-        border-radius: 1rem;
-        margin-bottom: 1.25rem;
-        padding: 0.9rem;
+        order: 1;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16 / 9;
+        max-height: 220px;
+        border-radius: 0.95rem;
     }
 
-    .projects__btn {
-        flex: 1;
-        min-width: 0;
+    .projects__content {
+        order: 2;
+        gap: 0.65rem;
+    }
+
+    .projects__title {
+        font-size: 1.25rem;
+        line-height: 1.3;
+    }
+
+    .projects__description {
+        font-size: 0.88rem;
+        line-height: 1.6;
+    }
+
+    .projects__skills {
+        order: 3;
+        gap: 0.35rem;
+        margin-top: 0.15rem;
+    }
+
+    .projects__skill-tag {
+        font-size: 0.72rem;
+        padding: 0.25rem 0.65rem;
+        border-radius: 0.75rem;
+    }
+
+    .projects__actions {
+        order: 4;
+        margin-top: 0.35rem;
+        padding-top: 0.65rem;
+        gap: 1.35rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .projects__action-icon-link {
+        font-size: 1.55rem;
+        padding: 0.2rem;
+    }
+
+    /* Moving border beam active on mobile cards */
+    .projects__card.edge-beam::after {
+        opacity: 0.9;
+        animation-play-state: running;
+    }
+}
+
+/* Extra small devices (<= 420px) */
+@media screen and (max-width: 420px) {
+    .projects__container {
+        padding-left: 0.85rem;
+        padding-right: 0.85rem;
+        gap: 1.25rem;
+    }
+
+    .projects__card {
+        padding: 1.15rem 0.95rem;
+        border-radius: 1.15rem;
+        gap: 1rem;
+    }
+
+    .projects__img-box {
+        border-radius: 0.8rem;
+    }
+
+    .projects__title {
+        font-size: 1.15rem;
+    }
+
+    .projects__description {
+        font-size: 0.84rem;
+        line-height: 1.55;
+    }
+
+    .projects__skills {
+        gap: 0.3rem;
+    }
+
+    .projects__skill-tag {
+        font-size: 0.68rem;
+        padding: 0.2rem 0.55rem;
+    }
+
+    .projects__actions {
+        margin-top: 0.2rem;
+        padding-top: 0.5rem;
+        gap: 1.15rem;
+    }
+
+    .projects__action-icon-link {
+        font-size: 1.4rem;
     }
 }

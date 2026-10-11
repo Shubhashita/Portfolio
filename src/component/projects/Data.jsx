@@ -3,18 +3,20 @@ import quizImage from '../../asset/quiz .png';
 import AirIndia from '../../asset/Airindia.PNG';
 import AMS from '../../asset/AirlineManagementSystem.jar';
 import port from '../../asset/port.png';
-import chat from '../../asset/hivechat.png';
+import memexAI from '../../asset/memexAI.png';
 import todo from '../../asset/todo.png';
 
 export const projectsData = [
     {
         id: 1,
-        title: "Hive Chat",
-        description: "Real-time chat app with instant messaging, media sharing, and seamless cross-device conversations.",
-        image: chat,
-        technologies: ["React", "Node.js", "Socket.Io", "MongoDB", "Cloudinary"],
-        demo: "https://hivechat-client.onrender.com",
-        github: "https://github.com/Shubhashita/hivechat-client"
+        title: "MemexAI",
+        description: "A full-stack, modern SaaS-style Personal Knowledge Management application. It features an intelligent AI-powered chat using Google's Gemini API, robust document management, real-time file processing, and semantic search capabilities.",
+        image: memexAI,
+        imageScale: 1,
+        imagePosition: "54% 42%",
+        technologies: ["React", "Tailwind CSS", "Node.js", "MongoDB", "Cloudinary", "Google Generative AI", "Multer"],
+        demo: "https://memex-ai-gamma.vercel.app/",
+        github: "https://github.com/Shubhashita/MemexAI"
     },
     {
         id: 2,

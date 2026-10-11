@@ -62,11 +62,7 @@ const Header = () => {
                     className="nav_logo"
                     onClick={(e) => handleNavClick(e, '#home')}
                 >
-                    <img
-                        src="/logo_ss.png"
-                        alt="Shubhashita Singh"
-                        className="nav_logo-img"
-                    />
+                    Portfolio.
                 </a>
 
                 <div className={Toggle ? 'nav_menu show-menu' : 'nav_menu'}>

@@ -15,33 +15,64 @@
     display: flex;
     flex-direction: column;
     gap: 1.25rem;
-    padding: 1rem 1.5rem 1rem 2.5rem;
-    /* Left padding for the bar */
+    padding: 1rem 1.5rem 1rem 2.25rem;
     position: relative;
-    overflow: hidden;
-    transition: all 0.4s ease;
+    border-left: 1px solid var(--border-color);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .skills__category:hover {
-    transform: translateX(10px);
-    /* Subtle shift to the right */
+    transform: translateX(6px);
+}
+
+/* ─── Moving Vertical Beam on Left Line (Ping-Pong) ─── */
+@keyframes skills-beam-vertical-pingpong {
+    0% {
+        background-position: 0 0%;
+    }
+    100% {
+        background-position: 0 100%;
+    }
 }
 
 .skills__category::after {
     content: "";
     position: absolute;
-    left: 0;
     top: 0;
-    width: 3px;
+    left: -1px;
+    width: 2.5px;
     height: 100%;
-    background: var(--title-color);
-    transform: scaleY(0);
-    transform-origin: top;
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    background: linear-gradient(
+        180deg,
+        transparent 0%,
+        rgba(229, 222, 210, 0.2) 20%,
+        #d5cbbe 42%,
+        #ffffff 50%,
+        #e5ded2 58%,
+        rgba(229, 222, 210, 0.2) 80%,
+        transparent 100%
+    );
+    background-size: 100% 45%;
+    background-repeat: no-repeat;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+    animation: skills-beam-vertical-pingpong 3.2s ease-in-out infinite alternate paused;
+    filter: drop-shadow(0 0 6px rgba(229, 222, 210, 0.8)) drop-shadow(0 0 14px rgba(229, 222, 210, 0.45));
+    z-index: 2;
 }
 
-.skills__category:hover::after {
-    transform: scaleY(1);
+.skills__category:hover::after,
+.skills__category:focus-within::after {
+    opacity: 1;
+    animation-play-state: running;
+}
+
+@media (hover: none) {
+    .skills__category::after {
+        opacity: 0.85;
+        animation-play-state: running;
+    }
 }
 
 .skills__category-title {
@@ -56,11 +87,11 @@
 .skills__bullet {
     width: 6px;
     height: 6px;
-    background: var(--title-color);
+    background: var(--accent-cream);
     border-radius: 1px;
     transform: rotate(45deg);
     margin-right: 0.75rem;
-    opacity: 0.8;
+    opacity: 0.85;
 }
 
 .skills__list {
@@ -71,22 +102,22 @@
 
 .skills__item {
     font-size: var(--smaller-font-size);
-    color: var(--text-color);
-    background: #fff;
-    padding: 0.5rem 1rem;
-    border-radius: 0.75rem;
-    border: 1px solid rgba(0, 0, 0, 0.06);
+    color: var(--title-color);
+    background: var(--container-color);
+    padding: 0.45rem 1.15rem;
+    border-radius: 2rem;
+    border: 1px solid var(--border-color);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     font-weight: 500;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
 .skills__item:hover {
-    background: var(--title-color);
-    color: #fff;
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    border-color: var(--title-color);
+    background: var(--accent-slate);
+    color: #f5f0e8;
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+    border-color: rgba(229, 222, 210, 0.3);
 }
 
 .fade-element {
@@ -114,16 +145,19 @@
 @media screen and (max-width: 576px) {
     .skills__grid {
         grid-template-columns: 1fr;
-        row-gap: 2.5rem;
-        text-align: center;
+        row-gap: 2.25rem;
+    }
+
+    .skills__category {
+        padding: 0.75rem 1rem 0.75rem 1.5rem;
     }
 
     .skills__category-title {
-        justify-content: center;
+        justify-content: flex-start;
     }
 
     .skills__list {
-        justify-content: center;
+        justify-content: flex-start;
     }
 }
 

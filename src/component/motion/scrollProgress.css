@@ -4,7 +4,7 @@
     left: 0;
     right: 0;
     height: 3px;
-    background: var(--title-color-dark);
+    background: var(--accent-cream);
     transform-origin: 0% 50%;
     z-index: 10000;
     pointer-events: none;
