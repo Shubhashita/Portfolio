@@ -30,7 +30,7 @@
     position: relative;
     background: transparent !important;
     border: none !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+    border-bottom: 1px solid var(--border-color) !important;
     box-shadow: none !important;
     border-radius: 0;
     transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
@@ -151,7 +151,7 @@
 
 .skills__item:hover {
     background: var(--accent-slate);
-    color: #f5f0e8;
+    color: var(--title-color-dark);
     transform: translateY(-2px) scale(1.04);
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
     border-color: rgba(229, 222, 210, 0.35);
@@ -171,6 +171,11 @@
 .skills__item-icon i {
     font-size: 1.15rem;
     line-height: 1;
+}
+
+.skills__icon--monochrome {
+    color: var(--title-color) !important;
+    transition: color 0.25s ease;
 }
 
 .skills__svg-icon {

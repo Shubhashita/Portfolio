@@ -209,7 +209,7 @@
 }
 
 .certifications__row:hover .certifications__item-title {
-    color: #ffffff;
+    color: var(--title-color-dark);
 }
 
 .certifications__item-issuer {

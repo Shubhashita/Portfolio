@@ -38,7 +38,7 @@ export const experienceData = [
         current: false,
         logo: techdomeLogo,
         monogram: "TD",
-        accentColor: "#e5ded2",
+        accentColor: "#8b5cf6",
         metrics: [
             { label: "Production Apps", value: "8" },
             { label: "Figma Screens Converted", value: "40+" },

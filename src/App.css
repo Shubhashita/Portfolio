@@ -15,6 +15,7 @@
   --title-color-dark: #f0ece3;
   --text-color: #9aa8b7;
   --text-color-muted: #728091;
+  --text-color-dark: #cbd5e1;
   --border-color: rgba(255, 255, 255, 0.08);
   --border-color-hover: rgba(229, 222, 210, 0.3);
   
@@ -465,4 +466,335 @@ img {
     padding: 0.75rem 1.25rem;
     font-size: 0.82rem;
   }
+}
+
+/*==========================================================
+  LIGHT THEME (Warm Sand, Cream & Rich Charcoal Slate)
+  Not pure white - warm, soothing, luxury editorial aesthetic
+==========================================================*/
+body.light-theme {
+  --body-color: #f5f0e8;
+  --container-color: #fbf8f3;
+  --container-color-alt: #ede6d8;
+  --card-hover-color: #e5ded0;
+  
+  --title-color: #1e2633;
+  --title-color-dark: #0f172a;
+  --text-color: #4a5568;
+  --text-color-muted: #6b778c;
+  --text-color-dark: #334155;
+  --border-color: rgba(30, 38, 51, 0.1);
+  --border-color-hover: rgba(30, 38, 51, 0.25);
+  
+  --accent-cream: #1e2633;
+  --accent-cream-hover: #0f172a;
+  --accent-slate: #d6ccbd;
+  --accent-slate-light: #52637a;
+
+  background-color: var(--body-color);
+  color: var(--text-color);
+}
+
+/* Smooth Theme Transition */
+body,
+.header,
+.experience,
+.project-card,
+.contact__card-box,
+.skills__item {
+  transition: background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+/* Light Theme Header - Warm Translucent Sand */
+body.light-theme .header {
+  background-color: rgba(245, 240, 232, 0.9);
+  border-bottom: 1px solid rgba(30, 38, 51, 0.08);
+  box-shadow: 0 2px 14px rgba(70, 50, 30, 0.05);
+}
+
+body.light-theme .scroll-header {
+  background-color: rgba(245, 240, 232, 0.96);
+  border-bottom-color: rgba(30, 38, 51, 0.12);
+  box-shadow: 0 4px 20px rgba(70, 50, 30, 0.08);
+}
+
+@media screen and (max-width: 768px) {
+  body.light-theme .nav_menu {
+    background-color: rgba(251, 248, 243, 0.98);
+    border-bottom: 1px solid rgba(30, 38, 51, 0.1);
+    box-shadow: 0 12px 35px rgba(60, 45, 30, 0.12);
+  }
+}
+
+body.light-theme .nav_link {
+  color: #4a5568;
+}
+
+body.light-theme .nav_link:hover,
+body.light-theme .nav_link.active-link {
+  color: #0f172a;
+}
+
+/* Warm Ambient Background Blobs (Soft Gold & Warm Sand) */
+body.light-theme .blob {
+  opacity: 0.18;
+  background: #d8cbb8;
+}
+
+body.light-theme .blob-1 {
+  background: #fcd34d;
+  opacity: 0.14;
+}
+
+body.light-theme .blob-2 {
+  background: #c4b5fd;
+  opacity: 0.12;
+}
+
+/* Light Theme Home Section */
+body.light-theme .home_img {
+  box-shadow: inset 0 0 0 9px rgba(30, 38, 51, 0.12), 0 12px 30px rgba(70, 50, 30, 0.1);
+}
+
+body.light-theme .home_subtitle::before {
+  background-color: #6b778c;
+}
+
+/* Light Theme Buttons - Bold Charcoal Slate with Warm Sand Text */
+body.light-theme .button {
+  background-color: #1e2633;
+  color: #f5f0e8;
+  border-color: rgba(30, 38, 51, 0.15);
+  box-shadow: 0 4px 14px rgba(30, 38, 51, 0.18);
+}
+
+body.light-theme .button:hover {
+  background-color: #0f172a;
+  color: #ffffff;
+  box-shadow: 0 6px 20px rgba(30, 38, 51, 0.28);
+}
+
+/* Light Theme Experience Section - Soft Toasted Cashmere Contrast */
+body.light-theme .experience {
+  background: #ebe4d8;
+}
+
+body.light-theme .experience__card {
+  background: #fbf8f3;
+  border: 1px solid rgba(30, 38, 51, 0.08);
+  box-shadow: 0 10px 25px rgba(70, 50, 30, 0.05);
+}
+
+body.light-theme .experience__tech-pill {
+  background: #ede6d8;
+  color: #1e2633;
+  border-color: rgba(30, 38, 51, 0.1);
+}
+
+body.light-theme .experience__tech-pill:hover {
+  background: #e2d9c8;
+  color: #0f172a !important;
+  border-color: rgba(30, 38, 51, 0.25);
+}
+
+body.light-theme .experience__metrics-row {
+  border-top: 1px dashed rgba(30, 38, 51, 0.15);
+  border-bottom: 1px dashed rgba(30, 38, 51, 0.15);
+}
+
+body.light-theme .experience__metric-item {
+  background: #ede6d8;
+  border-color: rgba(30, 38, 51, 0.08);
+}
+
+body.light-theme .experience__metric-label {
+  color: #4a5568;
+  font-weight: 600;
+}
+
+body.light-theme .experience__location,
+body.light-theme .experience__period {
+  color: #4a5568;
+}
+
+body.light-theme .experience__divider-line {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(30, 38, 51, 0.1) 20%,
+    rgba(30, 38, 51, 0.25) 50%,
+    rgba(30, 38, 51, 0.1) 80%,
+    transparent 100%
+  );
+}
+
+/* Light Theme Skills Section */
+body.light-theme .skills__row {
+  border-bottom-color: rgba(30, 38, 51, 0.08) !important;
+}
+
+body.light-theme .skills__item {
+  background: #fbf8f3;
+  border: 1px solid rgba(30, 38, 51, 0.08);
+  color: #1e2633;
+  box-shadow: 0 2px 8px rgba(70, 50, 30, 0.04);
+}
+
+body.light-theme .skills__item:hover {
+  background: #ede6d8;
+  color: #0f172a;
+  border-color: rgba(30, 38, 51, 0.25);
+}
+
+/* Light Theme Qualification Section */
+body.light-theme .qualification__button {
+  background: #fbf8f3;
+  border-color: rgba(30, 38, 51, 0.1);
+  box-shadow: 0 4px 15px rgba(70, 50, 30, 0.05);
+}
+
+body.light-theme .qualification__rounder {
+  background-color: #1e2633;
+  box-shadow: 0 0 10px rgba(30, 38, 51, 0.35);
+}
+
+body.light-theme .qualification__line {
+  background: linear-gradient(180deg, rgba(30, 38, 51, 0.35) 0%, rgba(30, 38, 51, 0.1) 100%);
+}
+
+/* Light Theme Projects Section */
+body.light-theme .project-card {
+  background: #fbf8f3;
+  border: 1px solid rgba(30, 38, 51, 0.08);
+  box-shadow: 0 12px 30px rgba(70, 50, 30, 0.06);
+}
+
+body.light-theme .projects__tech-pill {
+  background: #ede6d8;
+  border: 1px solid rgba(30, 38, 51, 0.12);
+  color: #1e2633;
+}
+
+body.light-theme .projects__tech-pill:hover {
+  background: #e2d9c8;
+  color: #0f172a !important;
+  border-color: rgba(30, 38, 51, 0.3);
+}
+
+body.light-theme .projects__action-link {
+  color: #1e2633;
+}
+
+body.light-theme .projects__action-link:hover {
+  color: #0f172a !important;
+}
+
+body.light-theme .projects__action-divider {
+  background: rgba(30, 38, 51, 0.2);
+}
+
+/* Light Theme Certifications Section */
+body.light-theme .certifications__row {
+  border-bottom-color: rgba(30, 38, 51, 0.08) !important;
+}
+
+body.light-theme .certifications__item:hover {
+  background: rgba(30, 38, 51, 0.04);
+}
+
+body.light-theme .certifications__year-badge {
+  background: #ede6d8;
+  border: 1px solid rgba(30, 38, 51, 0.12);
+  color: #4a5568;
+}
+
+body.light-theme .certifications__logo-tile {
+  background: #ffffff;
+  border: 1px solid rgba(30, 38, 51, 0.1);
+  box-shadow: 0 4px 14px rgba(70, 50, 30, 0.06);
+}
+
+body.light-theme .certifications__arrow-btn {
+  background: #ede6d8;
+  border: 1px solid rgba(30, 38, 51, 0.12);
+  color: #1e2633;
+}
+
+body.light-theme .certifications__arrow-btn:hover,
+body.light-theme .certifications__row:hover .certifications__arrow-btn {
+  background: #1e2633;
+  color: #f5f0e8;
+  border-color: #1e2633;
+  box-shadow: 0 4px 14px rgba(30, 38, 51, 0.25);
+}
+
+/* Light Theme Contact Section */
+body.light-theme .contact__card-box {
+  background: #fbf8f3;
+  border: 1px solid rgba(30, 38, 51, 0.08);
+  box-shadow: 0 16px 40px rgba(70, 50, 30, 0.07);
+}
+
+body.light-theme .contact__field-label {
+  color: #1e2633;
+  font-weight: 600;
+}
+
+body.light-theme .contact__field-input {
+  background: #f2ece0;
+  border: 1px solid rgba(30, 38, 51, 0.14);
+  color: #1e2633;
+}
+
+body.light-theme .contact__field-input::placeholder {
+  color: #718096;
+}
+
+body.light-theme .contact__field-input:focus {
+  border-color: #1e2633;
+  background: #fbf8f3;
+}
+
+body.light-theme .contact__circle-icon {
+  background: #ede6d8;
+  border: 1px solid rgba(30, 38, 51, 0.12);
+  color: #1e2633;
+}
+
+body.light-theme .contact__circle-icon:hover {
+  background: #1e2633;
+  color: #ffffff;
+  border-color: #1e2633;
+  box-shadow: 0 4px 14px rgba(30, 38, 51, 0.25);
+}
+
+body.light-theme .contact__handwritten-text {
+  color: #2d3748;
+  text-shadow: none;
+}
+
+/* Light Theme Scroll Up Button */
+body.light-theme .scrollup {
+  background-color: #1e2633;
+  color: #f5f0e8;
+  border: 1px solid rgba(30, 38, 51, 0.2);
+  box-shadow: 0 4px 15px rgba(30, 38, 51, 0.2);
+}
+
+body.light-theme .scrollup:hover {
+  background-color: #0f172a;
+}
+
+body.light-theme .scrollup__icon {
+  color: #f5f0e8 !important;
+}
+
+/* Universal Light Theme Hover Protections (Never pure white on hover) */
+body.light-theme .projects__item:hover .projects__title,
+body.light-theme .experience__achievement-item:hover .experience__achievement-text,
+body.light-theme .certifications__row:hover .certifications__item-title,
+body.light-theme .skills__item:hover,
+body.light-theme .projects__action-link:hover,
+body.light-theme .experience__tech-pill:hover {
+  color: #0f172a !important;
 }

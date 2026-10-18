@@ -299,7 +299,7 @@
 }
 
 .experience__achievement-item:hover .experience__achievement-text {
-    color: #ffffff;
+    color: var(--title-color-dark);
 }
 
 /* ===== Tech Stack Pills ===== */
@@ -327,7 +327,7 @@
 .experience__tech-pill:hover {
     background: rgba(229, 222, 210, 0.15);
     border-color: var(--accent-cream);
-    color: #ffffff;
+    color: var(--title-color-dark);
 }
 
 /* ===== Divider Line Between Experiences ===== */

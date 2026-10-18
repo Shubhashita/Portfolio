@@ -60,7 +60,7 @@ const skillsData = [
         category: 'Frontend',
         skills: [
             { name: 'React.js', iconClass: 'devicon-react-original colored' },
-            { name: 'Next.js', iconClass: 'devicon-nextjs-plain', iconStyle: { color: '#ffffff' } },
+            { name: 'Next.js', iconClass: 'devicon-nextjs-plain skills__icon--monochrome' },
             { name: 'Tailwind CSS', iconClass: 'devicon-tailwindcss-original colored' },
             { name: 'HTML5', iconClass: 'devicon-html5-plain colored' },
             { name: 'CSS3', iconClass: 'devicon-css3-plain colored' },
@@ -72,10 +72,10 @@ const skillsData = [
         category: 'Backend',
         skills: [
             { name: 'Node.js', iconClass: 'devicon-nodejs-plain colored' },
-            { name: 'Express.js', iconClass: 'devicon-express-original', iconStyle: { color: '#ffffff' } },
+            { name: 'Express.js', iconClass: 'devicon-express-original skills__icon--monochrome' },
             { name: 'RESTful APIs', iconClass: 'bx bx-network-chart', iconStyle: { color: '#38bdf8' } },
-            { name: 'Socket.IO', iconClass: 'devicon-socketio-original', iconStyle: { color: '#ffffff' } },
-            { name: 'Prisma', iconClass: 'devicon-prisma-original', iconStyle: { color: '#ffffff' } },
+            { name: 'Socket.IO', iconClass: 'devicon-socketio-original skills__icon--monochrome' },
+            { name: 'Prisma', iconClass: 'devicon-prisma-original skills__icon--monochrome' },
             { name: 'JWT', iconClass: 'bx bxs-key', iconStyle: { color: '#f59e0b' } },
             { name: 'RBAC', iconClass: 'bx bxs-shield-alt-2', iconStyle: { color: '#38bdf8' } },
             { name: 'Bcrypt', iconClass: 'bx bxs-lock-alt', iconStyle: { color: '#10b981' } },
@@ -94,7 +94,7 @@ const skillsData = [
         category: 'Tools',
         skills: [
             { name: 'Git', iconClass: 'devicon-git-plain colored' },
-            { name: 'GitHub', iconClass: 'devicon-github-original', iconStyle: { color: '#ffffff' } },
+            { name: 'GitHub', iconClass: 'devicon-github-original skills__icon--monochrome' },
             { name: 'Postman', iconClass: 'devicon-postman-plain colored' },
             { name: 'Jira', iconClass: 'devicon-jira-plain colored' },
             { name: 'VS Code', iconClass: 'devicon-vscode-plain colored' },

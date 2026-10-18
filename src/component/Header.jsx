@@ -17,6 +17,22 @@ const Header = () => {
     const [Toggle, showMenu] = useState(false);
     const [activeSection, setActiveSection] = useState('home');
     const [scrolled, setScrolled] = useState(false);
+    const [theme, setTheme] = useState(() => {
+        return localStorage.getItem('selected-theme') || 'dark';
+    });
+
+    useEffect(() => {
+        if (theme === 'light') {
+            document.body.classList.add('light-theme');
+        } else {
+            document.body.classList.remove('light-theme');
+        }
+        localStorage.setItem('selected-theme', theme);
+    }, [theme]);
+
+    const toggleTheme = () => {
+        setTheme((prevTheme) => (prevTheme === 'dark' ? 'light' : 'dark'));
+    };
 
     useEffect(() => {
         const sectionIds = navLinks.map((l) => l.href.replace('#', ''));
@@ -91,8 +107,22 @@ const Header = () => {
                     ></i>
                 </div>
 
-                <div className="nav__toggle" onClick={() => showMenu(!Toggle)}>
-                    <i className="uil uil-apps"></i>
+                <div className="nav__buttons">
+                    {/* Theme Toggle Button */}
+                    <button
+                        type="button"
+                        className="change-theme"
+                        onClick={toggleTheme}
+                        aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+                        title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+                    >
+                        <i className={`uil ${theme === 'dark' ? 'uil-sun' : 'uil-moon'} change-theme-icon`}></i>
+                    </button>
+
+                    {/* Mobile Menu Toggle */}
+                    <div className="nav__toggle" onClick={() => showMenu(!Toggle)}>
+                        <i className="uil uil-apps"></i>
+                    </div>
                 </div>
             </nav>
         </header>

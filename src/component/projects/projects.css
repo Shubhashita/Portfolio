@@ -172,7 +172,7 @@
 }
 
 .projects__item:hover .projects__title {
-    color: #ffffff;
+    color: var(--title-color-dark);
 }
 
 .projects__desc {
@@ -249,7 +249,7 @@
 }
 
 .projects__action-link:hover {
-    color: #ffffff;
+    color: var(--title-color-dark);
     transform: translateY(-2px);
 }
 
