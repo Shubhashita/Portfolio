@@ -18,10 +18,12 @@
 .home_social-icon {
     font-size: 1.25rem;
     color: var(--title-color);
+    transition: color 0.25s ease, transform 0.25s ease;
 }
 
 .home_social-icon:hover {
     color: var(--title-color-dark);
+    transform: scale(1.15);
 }
 
 .home_title {
@@ -168,8 +170,8 @@
 
     .home_img {
         order: 0;
-        width: 180px;
-        height: 180px;
+        width: 200px;
+        height: 200px;
         margin: 0 auto;
         justify-self: center;
         box-shadow: inset 0 0 0 6px rgba(255, 255, 255, 0.3), 0 8px 25px rgba(0, 0, 0, 0.3);
@@ -214,7 +216,7 @@
         margin: 0 auto var(--mb-2);
         text-align: center;
         font-size: 0.92rem;
-        line-height: 1.6;
+        line-height: 1.7;
         word-wrap: break-word;
     }
 
@@ -230,12 +232,12 @@
         justify-content: center;
         align-items: center;
         column-gap: 2rem;
-        margin-top: 0.25rem;
+        margin-top: 0.5rem;
         width: 100%;
     }
 
     .home_social-icon {
-        font-size: 1.4rem;
+        font-size: 1.5rem;
     }
 
     .home_scroll {
@@ -244,6 +246,39 @@
 }
 
 /* For small devices */
+@media screen and (max-width: 480px) {
+    .home_container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+        row-gap: 2rem;
+    }
+
+    .home_content {
+        padding-top: 2rem;
+        row-gap: 1.5rem;
+    }
+
+    .home_img {
+        width: 165px;
+        height: 165px;
+        box-shadow: inset 0 0 0 5px rgba(255, 255, 255, 0.25), 0 6px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .home_title {
+        font-size: clamp(1.55rem, 8vw, 2rem);
+    }
+
+    .home_subtitle {
+        font-size: 0.95rem;
+    }
+
+    .home_description {
+        font-size: 0.86rem;
+        max-width: 300px;
+        line-height: 1.65;
+    }
+}
+
 @media screen and (max-width: 360px) {
     .home_container {
         padding-left: 0.75rem;
@@ -251,16 +286,24 @@
     }
 
     .home_img {
-        width: 145px;
-        height: 145px;
+        width: 140px;
+        height: 140px;
     }
 
     .home_title {
-        font-size: 1.65rem;
+        font-size: 1.55rem;
     }
 
     .home_description {
-        font-size: 0.86rem;
-        max-width: 290px;
+        font-size: 0.82rem;
+        max-width: 270px;
+    }
+
+    .home_social {
+        column-gap: 1.5rem;
+    }
+
+    .home_social-icon {
+        font-size: 1.35rem;
     }
 }

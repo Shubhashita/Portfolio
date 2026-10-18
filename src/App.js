@@ -7,8 +7,9 @@ import Home from './component/home/Home.jsx';
 import About from './component/about/About.jsx';
 import Skills from './component/skills.js/Skills.jsx';
 import Qualification from './component/qualification/Qualification.jsx';
-import Certifications from './component/certifications/Certifications.jsx';
+import Experience from './component/experience/Experience.jsx';
 import Projects from './component/projects/Projects.jsx';
+import Certifications from './component/certifications/Certifications.jsx';
 import Contact from './component/contact/Contact.jsx';
 import ScrollUp from './component/scrollup/ScrollUp.jsx';
 import ScrollProgress from './component/motion/ScrollProgress.jsx';
@@ -32,9 +33,10 @@ const App = () => {
           <Home />
           <About />
           <Skills />
+          <Experience />
           <Qualification />
-          <Certifications />
           <Projects />
+          <Certifications />
           <Contact />
           <ScrollUp />
         </main>

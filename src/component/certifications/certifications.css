@@ -1,204 +1,365 @@
-/*=============== CERTIFICATIONS ===============*/
+/*=============== CERTIFICATIONS (OPEN TIMELINE - VERTICAL LINE APPEARS ON HOVER) ===============*/
+.certifications {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
 .certifications__container {
-    max-width: 920px;
+    max-width: 900px;
     margin: 0 auto;
-    padding-bottom: 3rem;
+    padding-bottom: 5rem;
+    position: relative;
+}
+
+/* Timeline Wrap */
+.certifications__timeline-wrap {
+    position: relative;
+    width: 100%;
+    margin-top: 1.5rem;
+}
+
+/* Vertical Timeline Track - HIDDEN BY DEFAULT, APPEARS ON SECTION HOVER */
+.certifications__timeline-line {
+    position: absolute;
+    top: 1.25rem;
+    bottom: 1.25rem;
+    left: 114px;
+    width: 2px;
+    transform: translateX(-50%);
+    background: linear-gradient(
+        180deg,
+        transparent 0%,
+        rgba(84, 102, 120, 0.4) 15%,
+        var(--accent-cream) 50%,
+        rgba(84, 102, 120, 0.4) 85%,
+        transparent 100%
+    );
+    box-shadow: 0 0 10px rgba(229, 222, 210, 0.35);
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Vertical line appears when hovering anywhere in that section */
+.certifications__timeline-wrap:hover .certifications__timeline-line,
+.certifications__container:hover .certifications__timeline-line {
+    opacity: 0.6;
+}
+
+/* Timeline Rows List */
+.certifications__list {
     display: flex;
     flex-direction: column;
-    gap: 0;
 }
 
-/* ─── Each row ─── */
-.certifications__item {
-    display: flex;
-    align-items: flex-start;
+/* Timeline Row with Generous Clearance */
+.certifications__row {
+    display: grid;
+    grid-template-columns: 74px 40px 1fr auto;
+    align-items: center;
     gap: 1.25rem;
-    padding: 1.1rem 1rem 1.1rem 1.5rem;
+    padding: 1.75rem 1.25rem;
     position: relative;
-    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 2;
+    border-radius: 0.85rem;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    transition: background 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* ─── Moving Horizontal Beam on Bottom Line (Ping-Pong) ─── */
-@keyframes horizontal-beam-pingpong {
-    0% {
-        background-position: 0% 0;
-    }
-    100% {
-        background-position: 100% 0;
-    }
+.certifications__row:hover {
+    background: rgba(255, 255, 255, 0.025) !important;
 }
 
-.certifications__item::after {
-    content: "";
+/* Subtle separator between rows */
+.certifications__row:not(:last-child)::after {
+    content: '';
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 2px;
+    height: 1px;
     background: linear-gradient(
         90deg,
         transparent 0%,
-        rgba(229, 222, 210, 0.2) 20%,
-        #d5cbbe 42%,
-        #ffffff 50%,
-        #e5ded2 58%,
-        rgba(229, 222, 210, 0.2) 80%,
+        rgba(255, 255, 255, 0.08) 15%,
+        rgba(229, 222, 210, 0.15) 50%,
+        rgba(255, 255, 255, 0.08) 85%,
         transparent 100%
     );
-    background-size: 45% 100%;
-    background-repeat: no-repeat;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.35s ease;
-    animation: horizontal-beam-pingpong 3.2s ease-in-out infinite alternate paused;
-    filter: drop-shadow(0 0 6px rgba(229, 222, 210, 0.8)) drop-shadow(0 0 14px rgba(229, 222, 210, 0.45));
+}
+
+/* Column 1: Year Pill Badge */
+.certifications__year-col {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.certifications__year-badge {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    padding: 0.35rem 0.85rem;
+    border-radius: 9999px;
+    font-size: 0.813rem;
+    font-weight: 500;
+    color: var(--text-color);
+    letter-spacing: 0.03em;
+    transition: all 0.25s ease;
+}
+
+.certifications__row:hover .certifications__year-badge {
+    border-color: rgba(229, 222, 210, 0.35);
+    color: var(--accent-cream);
+    background: rgba(229, 222, 210, 0.08);
+}
+
+/* Column 2: Vertical Line Indicator (Appears on Hover) */
+.certifications__line-col {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
     z-index: 2;
+    height: 100%;
 }
 
-.certifications__item:hover::after,
-.certifications__item:focus-within::after {
+.certifications__row-indicator {
+    width: 2.5px;
+    height: 48px;
+    border-radius: 2px;
+    background: linear-gradient(
+        180deg,
+        transparent 0%,
+        #ffffff 30%,
+        var(--accent-cream) 50%,
+        #ffffff 70%,
+        transparent 100%
+    );
+    box-shadow: 
+        0 0 12px rgba(229, 222, 210, 0.8),
+        0 0 24px rgba(229, 222, 210, 0.45);
+    opacity: 0;
+    transform: scaleY(0.4);
+    transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* On hover, vertical line beam illuminates on the active row */
+.certifications__row:hover .certifications__row-indicator {
     opacity: 1;
-    animation-play-state: running;
+    transform: scaleY(1);
 }
 
-@media (hover: none) {
-    .certifications__item::after {
-        opacity: 0.85;
-        animation-play-state: running;
-    }
+/* Column 3: Logo Tile + Title & Issuer */
+.certifications__details-col {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    min-width: 0;
 }
 
-.certifications__item:hover {
-    transform: translateX(8px);
-}
-
-/* subtle separator between rows */
-.certifications__item+.certifications__item {
-    border-top: 1px solid var(--border-color);
-}
-
-/* ─── Diamond bullet (matches skills__bullet) ─── */
-.certifications__bullet {
-    width: 8px;
-    height: 8px;
-    background: var(--accent-cream);
-    border-radius: 1px;
-    transform: rotate(45deg);
+.certifications__logo-tile {
+    width: 3.25rem;
+    height: 3.25rem;
+    border-radius: 0.85rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.28);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     flex-shrink: 0;
-    margin-top: 0.45rem;
-    opacity: 0.85;
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    padding: 0.5rem;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.certifications__item:hover .certifications__bullet {
-    opacity: 1;
-    transform: rotate(45deg) scale(1.3);
+.certifications__logo-svg {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.35));
 }
 
-/* ─── Text group ─── */
-.certifications__info {
+.certifications__row:hover .certifications__logo-tile {
+    transform: translateY(-2px);
+    border-color: rgba(229, 222, 210, 0.25);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.38);
+}
+
+.certifications__text-wrap {
     display: flex;
     flex-direction: column;
-    gap: 0.3rem;
-    flex: 1;
+    gap: 0.35rem;
+    min-width: 0;
 }
 
-.certifications__title {
-    font-size: var(--normal-font-size);
+.certifications__item-title {
+    font-size: 1.15rem;
     font-weight: 600;
-    color: var(--title-color);
-    line-height: 1.3;
+    color: var(--title-color-dark);
+    letter-spacing: -0.01em;
+    line-height: 1.4;
+    transition: color 0.2s ease;
+    /* Prevent overflow on small screens */
+    overflow-wrap: break-word;
+    word-wrap: break-word;
 }
 
-/* ─── Meta row: issuer chip + date ─── */
-.certifications__meta {
-    display: flex;
-    align-items: center;
-    gap: 0.65rem;
-    flex-wrap: wrap;
+.certifications__row:hover .certifications__item-title {
+    color: #ffffff;
 }
 
-.certifications__issuer {
-    font-size: var(--smaller-font-size);
-    font-weight: 500;
-    color: var(--title-color);
-    background: var(--container-color);
-    padding: 0.2rem 0.75rem;
-    border-radius: 0.5rem;
-    border: 1px solid var(--border-color);
-    transition: background 0.3s ease, color 0.3s ease;
-}
-
-.certifications__item:hover .certifications__issuer {
-    background: var(--accent-slate);
-    color: #f7f3eb;
-    border-color: rgba(229, 222, 210, 0.3);
-}
-
-.certifications__date {
-    font-size: var(--smaller-font-size);
+.certifications__item-issuer {
+    font-size: 0.875rem;
     color: var(--text-color);
-    opacity: 0.65;
+    font-weight: 400;
+}
+
+/* Column 4: Circular Action Arrow Button */
+.certifications__action-col {
     display: flex;
     align-items: center;
-    gap: 0.2rem;
+    justify-content: flex-end;
+    padding-left: 0.75rem;
 }
 
-/* ─── View link ─── */
-.certifications__link {
-    font-size: var(--smaller-font-size);
-    font-weight: 500;
-    color: var(--title-color);
-    display: inline-flex;
+.certifications__arrow-btn {
+    width: 2.6rem;
+    height: 2.6rem;
+    border-radius: 50%;
+    display: flex;
     align-items: center;
-    gap: 0.2rem;
-    flex-shrink: 0;
-    align-self: center;
-    opacity: 0;
-    transform: translateX(-6px);
-    transition: opacity 0.25s ease, transform 0.25s ease, gap 0.25s ease;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--text-color);
+    font-size: 1.4rem;
+    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    /* Better tap target */
+    min-width: 44px;
+    min-height: 44px;
 }
 
-.certifications__item:hover .certifications__link {
-    opacity: 1;
-    transform: translateX(0);
+.certifications__arrow-btn:hover,
+.certifications__row:hover .certifications__arrow-btn {
+    background: var(--accent-cream);
+    color: #161c22;
+    transform: translateX(4px);
+    border-color: var(--accent-cream);
+    box-shadow: 0 0 16px rgba(229, 222, 210, 0.55);
 }
 
-.certifications__link:hover {
-    gap: 0.45rem;
-}
-
-/*=============== FADE ANIMATION ===============*/
-.fade-element {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.fade-in {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/*=============== BREAKPOINTS ===============*/
+/*=============== RESPONSIVE BREAKPOINTS ===============*/
 @media screen and (max-width: 768px) {
     .certifications__container {
-        margin-left: var(--mb-0-75);
-        margin-right: var(--mb-0-75);
+        padding-bottom: 3.5rem;
     }
 
-    .certifications__item {
-        padding: 0.9rem 0.75rem 0.9rem 1.25rem;
+    .certifications__timeline-line {
+        left: 92px;
     }
 
-    .certifications__link {
-        opacity: 1;
-        transform: none;
+    .certifications__row {
+        grid-template-columns: 62px 36px 1fr auto;
+        gap: 0.95rem;
+        padding: 1.45rem 0.85rem;
+    }
+
+    .certifications__details-col {
+        gap: 1rem;
+    }
+
+    .certifications__logo-tile {
+        width: 2.85rem;
+        height: 2.85rem;
+        padding: 0.4rem;
+    }
+
+    .certifications__item-title {
+        font-size: 1.05rem;
+    }
+
+    .certifications__item-issuer {
+        font-size: 0.82rem;
     }
 }
 
-@media screen and (max-width: 350px) {
-    .certifications__title {
-        font-size: var(--small-font-size);
+@media screen and (max-width: 576px) {
+    .certifications__timeline-line {
+        display: none;
+    }
+
+    .certifications__row {
+        grid-template-columns: 1fr auto;
+        gap: 0.85rem;
+        padding: 1.25rem 0.5rem;
+    }
+
+    /* Hide year and line columns, show year inside details */
+    .certifications__year-col {
+        display: none;
+    }
+
+    .certifications__line-col {
+        display: none;
+    }
+
+    .certifications__details-col {
+        gap: 0.85rem;
+    }
+
+    .certifications__logo-tile {
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 0.65rem;
+        padding: 0.35rem;
+    }
+
+    .certifications__item-title {
+        font-size: 0.92rem;
+        line-height: 1.35;
+    }
+
+    .certifications__item-issuer {
+        font-size: 0.76rem;
+    }
+
+    .certifications__arrow-btn {
+        width: 2.2rem;
+        height: 2.2rem;
+        font-size: 1.2rem;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .certifications__row {
+        padding: 1.15rem 0.25rem;
+        gap: 0.65rem;
+    }
+
+    .certifications__logo-tile {
+        width: 2.2rem;
+        height: 2.2rem;
+        padding: 0.3rem;
+        border-radius: 0.55rem;
+    }
+
+    .certifications__item-title {
+        font-size: 0.85rem;
+    }
+
+    .certifications__item-issuer {
+        font-size: 0.72rem;
+    }
+
+    .certifications__arrow-btn {
+        width: 2rem;
+        height: 2rem;
+        font-size: 1.1rem;
     }
 }

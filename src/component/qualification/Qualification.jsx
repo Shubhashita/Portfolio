@@ -46,62 +46,94 @@ const Qualification = () => {
                 </motion.div>
 
                 <div className="qualification__sections">
-                    <div className="qualification__content">
+                    <div className="qualification__content-list">
                         {education.map((item, index) => {
                             const isLeft = item.side === 'left';
+                            const isLast = index === education.length - 1;
+
                             return (
-                                <motion.div
+                                <div
                                     key={item.title}
-                                    className="qualification__data"
-                                    initial={{
-                                        opacity: 0,
-                                        x: isLeft ? -56 : 56,
-                                    }}
-                                    whileInView={{ opacity: 1, x: 0 }}
-                                    viewport={{ once: true, amount: 0.35 }}
-                                    transition={{
-                                        duration: 0.65,
-                                        delay: index * 0.12,
-                                        ease,
-                                    }}
+                                    className={`qualification__data ${
+                                        isLeft ? 'qualification__data--left' : 'qualification__data--right'
+                                    }`}
                                 >
+                                    {/* Left Column */}
                                     {isLeft ? (
-                                        <>
-                                            <div>
-                                                <h3 className="qualification__title">{item.title}</h3>
-                                                <span className="qualification__subtitle">
-                                                    {item.subtitle}
-                                                </span>
-                                                <div className="qualification__calendar">
-                                                    <i className="uil uil-calendar-alt"></i>
-                                                    {item.calendar}
-                                                </div>
+                                        <motion.div
+                                            className="qualification__item qualification__item--left"
+                                            initial={{ opacity: 0, x: -45 }}
+                                            whileInView={{ opacity: 1, x: 0 }}
+                                            viewport={{ once: true, amount: 0.2 }}
+                                            transition={{
+                                                duration: 0.6,
+                                                delay: index * 0.16,
+                                                ease,
+                                            }}
+                                        >
+                                            <h3 className="qualification__title">{item.title}</h3>
+                                            <span className="qualification__subtitle">{item.subtitle}</span>
+                                            <div className="qualification__calendar">
+                                                <i className="uil uil-calendar-alt"></i>
+                                                <span>{item.calendar}</span>
                                             </div>
-                                            <div>
-                                                <span className="qualification__rounder"></span>
-                                                <span className="qualification__line"></span>
-                                            </div>
-                                        </>
+                                        </motion.div>
                                     ) : (
-                                        <>
-                                            <div></div>
-                                            <div>
-                                                <span className="qualification__rounder"></span>
-                                                <span className="qualification__line"></span>
-                                            </div>
-                                            <div>
-                                                <h3 className="qualification__title">{item.title}</h3>
-                                                <span className="qualification__subtitle">
-                                                    {item.subtitle}
-                                                </span>
-                                                <div className="qualification__calendar">
-                                                    <i className="uil uil-calendar-alt"></i>
-                                                    {item.calendar}
-                                                </div>
-                                            </div>
-                                        </>
+                                        <div className="qualification__empty" aria-hidden="true"></div>
                                     )}
-                                </motion.div>
+
+                                    {/* Middle Column: Central Timeline Line & Dot */}
+                                    <div className="qualification__timeline">
+                                        <motion.span
+                                            className="qualification__rounder"
+                                            initial={{ scale: 0, opacity: 0 }}
+                                            whileInView={{ scale: 1, opacity: 1 }}
+                                            viewport={{ once: true, amount: 0.2 }}
+                                            transition={{
+                                                duration: 0.4,
+                                                delay: index * 0.16 + 0.08,
+                                                ease,
+                                            }}
+                                        ></motion.span>
+                                        {!isLast && (
+                                            <motion.span
+                                                className="qualification__line"
+                                                initial={{ scaleY: 0, opacity: 0 }}
+                                                whileInView={{ scaleY: 1, opacity: 1 }}
+                                                viewport={{ once: true, amount: 0.2 }}
+                                                transition={{
+                                                    duration: 0.5,
+                                                    delay: index * 0.16 + 0.16,
+                                                    ease,
+                                                }}
+                                            ></motion.span>
+                                        )}
+                                    </div>
+
+                                    {/* Right Column */}
+                                    {!isLeft ? (
+                                        <motion.div
+                                            className="qualification__item qualification__item--right"
+                                            initial={{ opacity: 0, x: 45 }}
+                                            whileInView={{ opacity: 1, x: 0 }}
+                                            viewport={{ once: true, amount: 0.2 }}
+                                            transition={{
+                                                duration: 0.6,
+                                                delay: index * 0.16,
+                                                ease,
+                                            }}
+                                        >
+                                            <h3 className="qualification__title">{item.title}</h3>
+                                            <span className="qualification__subtitle">{item.subtitle}</span>
+                                            <div className="qualification__calendar">
+                                                <i className="uil uil-calendar-alt"></i>
+                                                <span>{item.calendar}</span>
+                                            </div>
+                                        </motion.div>
+                                    ) : (
+                                        <div className="qualification__empty" aria-hidden="true"></div>
+                                    )}
+                                </div>
                             );
                         })}
                     </div>

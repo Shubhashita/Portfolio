@@ -1,161 +1,191 @@
 import React from 'react';
 import { projectsData } from './Data';
 import { motion } from 'framer-motion';
-import SectionHeading from '../motion/SectionHeading';
 import './projects.css';
 
 const ease = [0.22, 1, 0.36, 1];
 
-const containerVariants = {
-    hidden: {},
-    visible: {
-        transition: { staggerChildren: 0.14, delayChildren: 0.05 },
-    },
-};
-
-const cardVariants = {
-    hidden: { opacity: 0, y: 48, scale: 0.96 },
+const projectVariants = {
+    hidden: { opacity: 0, y: 35, filter: 'blur(6px)' },
     visible: {
         opacity: 1,
         y: 0,
-        scale: 1,
-        transition: { duration: 0.65, ease },
+        filter: 'blur(0px)',
+        transition: { duration: 0.7, ease },
     },
 };
 
-const skillTagSpring = {
+const techPillVariants = {
     hidden: { scale: 0, opacity: 0 },
     visible: (i) => ({
         scale: 1,
         opacity: 1,
         transition: {
-            delay: 0.15 + i * 0.04,
+            delay: 0.1 + i * 0.05,
             type: 'spring',
-            stiffness: 340,
+            stiffness: 350,
             damping: 20,
         },
     }),
 };
 
-const iconSpring = {
-    hidden: { scale: 0, opacity: 0 },
-    visible: (i) => ({
-        scale: 1,
-        opacity: 1,
-        transition: {
-            delay: 0.25 + i * 0.08,
-            type: 'spring',
-            stiffness: 350,
-            damping: 18,
-        },
-    }),
-};
+const ProjectItem = ({ project, index }) => {
+    const isEven = index % 2 === 1;
+    const numFormatted = String(index + 1).padStart(2, '0');
 
-const ProjectCard = ({ project }) => {
     return (
-        <motion.article
-            className="projects__card edge-beam"
-            variants={cardVariants}
-            whileHover={{ y: -6, scale: 1.01 }}
-            transition={{ duration: 0.35, ease }}
+        <motion.div
+            className={`projects__item ${isEven ? 'projects__item--reverse' : ''}`}
+            variants={projectVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "120px 0px -40px 0px" }}
         >
-            {/* Left Column: Image box + skills list */}
-            <div className="projects__left">
-                <div className="projects__img-box">
+            {/* Visual Showcase Column (Image + Number Badge) */}
+            <div className="projects__showcase">
+                {/* Image Frame */}
+                <a
+                    href={project.demo || project.github || '#projects'}
+                    target={project.demo || project.github ? '_blank' : undefined}
+                    rel="noopener noreferrer"
+                    className="projects__img-frame"
+                    title={`View ${project.title}`}
+                >
                     <img
                         src={project.image}
                         alt={project.title}
                         className="projects__img"
                         style={{
-                            ...(project.imageScale ? { '--img-scale': project.imageScale } : {}),
-                            ...(project.imagePosition ? { objectPosition: project.imagePosition } : {}),
+                            ...(project.imagePosition && { '--img-pos': project.imagePosition }),
+                            ...(project.imageScale && { '--img-scale': project.imageScale }),
                         }}
+                        loading="lazy"
                     />
-                </div>
+                    <div className="projects__img-overlay" />
+                </a>
+            </div>
+
+            {/* Project Details Column */}
+            <div className="projects__details">
+                <h3 className="projects__title">{project.title}</h3>
+                <p className="projects__desc">{project.description}</p>
+
+                {/* Tech Stack Pills (Spring Pop-Up Animation) */}
                 {project.technologies && project.technologies.length > 0 && (
-                    <div className="projects__skills">
-                        {project.technologies.map((tech, idx) => (
+                    <div className="projects__tech-list">
+                        {project.technologies.map((tech, tIndex) => (
                             <motion.span
-                                key={idx}
-                                className="projects__skill-tag"
-                                custom={idx}
-                                variants={skillTagSpring}
+                                key={tech}
+                                className="projects__tech-pill"
+                                custom={tIndex}
+                                variants={techPillVariants}
                                 initial="hidden"
                                 whileInView="visible"
-                                viewport={{ once: true, amount: 0.1 }}
-                                whileHover={{ y: -2, scale: 1.06 }}
+                                viewport={{ once: true, amount: 0.2 }}
+                                whileHover={{ y: -4, scale: 1.08 }}
+                                transition={{ type: 'spring', stiffness: 400, damping: 17 }}
                             >
                                 {tech}
                             </motion.span>
                         ))}
                     </div>
                 )}
-            </div>
 
-            {/* Right Column: Title, Description, and clean unboxed action icons */}
-            <div className="projects__right">
-                <div className="projects__content">
-                    <h3 className="projects__title">{project.title}</h3>
-                    <p className="projects__description">{project.description}</p>
-                </div>
+                {/* Action Links Row (Icons Only, Separated by Vertical Divider Line) */}
+                {(project.github || project.demo) && (
+                    <div className="projects__actions-row">
+                        {project.github && (
+                            <a
+                                href={project.github}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="projects__action-link"
+                                title={`${project.title} GitHub`}
+                                aria-label={`${project.title} GitHub`}
+                            >
+                                <i className="bx bxl-github" />
+                            </a>
+                        )}
 
-                <div className="projects__actions">
-                    {project.github && (
-                        <motion.a
-                            href={project.github}
-                            className="projects__action-icon-link"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label={`${project.title} GitHub repository`}
-                            title="GitHub"
-                            custom={0}
-                            variants={iconSpring}
-                            initial="hidden"
-                            whileInView="visible"
-                            viewport={{ once: true, amount: 0.1 }}
-                        >
-                            <i className="uil uil-github-alt"></i>
-                        </motion.a>
-                    )}
-                    {project.demo && (
-                        <motion.a
-                            href={project.demo}
-                            className="projects__action-icon-link"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label={`${project.title} Live Demo`}
-                            title="Live Demo"
-                            custom={1}
-                            variants={iconSpring}
-                            initial="hidden"
-                            whileInView="visible"
-                            viewport={{ once: true, amount: 0.1 }}
-                        >
-                            <i className="uil uil-external-link-alt"></i>
-                        </motion.a>
-                    )}
-                </div>
+                        {project.github && project.demo && project.demo !== project.github && (
+                            <span className="projects__action-divider" aria-hidden="true" />
+                        )}
+
+                        {project.demo && project.demo !== project.github && (
+                            <a
+                                href={project.demo}
+                                target={project.demo !== '#' ? '_blank' : undefined}
+                                rel="noopener noreferrer"
+                                className="projects__action-link"
+                                title={`${project.title} Live Demo`}
+                                aria-label={`${project.title} Live Demo`}
+                            >
+                                <i className="bx bx-link-external" />
+                            </a>
+                        )}
+                    </div>
+                )}
             </div>
-        </motion.article>
+        </motion.div>
     );
 };
 
 const Projects = () => {
     return (
         <section className="projects section" id="projects">
-            <SectionHeading title="Projects" subtitle="Browse My Recent" />
+            {/* Custom Header Matching Mockup */}
+            <div className="projects__header-container container">
+                <motion.div
+                    className="projects__header"
+                    initial={{ opacity: 0, y: 24 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.6 }}
+                    transition={{ duration: 0.65, ease }}
+                >
+                    <span className="projects__eyebrow">MY WORK</span>
+                    <h2 className="projects__heading">Projects</h2>
+                    <p className="projects__subheading">
+                        Turning ideas into real-world applications
+                    </p>
+                    <span className="projects__header-line" aria-hidden="true" />
+                </motion.div>
+            </div>
 
-            <motion.div
-                className="projects__container container grid"
-                variants={containerVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: '-60px' }}
-            >
-                {projectsData.map((project) => (
-                    <ProjectCard key={project.id} project={project} />
+            {/* Alternating Projects Showcase */}
+            <div className="projects__container container">
+                {projectsData.map((project, index) => (
+                    <React.Fragment key={project.id}>
+                        <ProjectItem project={project} index={index} />
+
+                        {/* Curved dashed connector trail between projects */}
+                        {index < projectsData.length - 1 && (
+                            <div
+                                className={`projects__connector ${
+                                    index % 2 === 1 ? 'projects__connector--reverse' : ''
+                                }`}
+                                aria-hidden="true"
+                            >
+                                <svg
+                                    className="projects__connector-svg"
+                                    viewBox="0 0 500 80"
+                                    fill="none"
+                                >
+                                    <path
+                                        d={
+                                            index % 2 === 0
+                                                ? 'M 180 12 C 260 25, 360 40, 420 68'
+                                                : 'M 320 12 C 240 25, 140 40, 80 68'
+                                        }
+                                        stroke="rgba(106, 125, 145, 0.35)"
+                                        strokeWidth="2"
+                                        strokeDasharray="6 6"
+                                    />
+                                </svg>
+                            </div>
+                        )}
+                    </React.Fragment>
                 ))}
-            </motion.div>
+            </div>
         </section>
     );
 };

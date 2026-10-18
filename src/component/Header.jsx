@@ -6,9 +6,10 @@ const navLinks = [
     { href: '#home', label: 'Home', icon: 'uil-estate' },
     { href: '#about', label: 'About', icon: 'uil-user' },
     { href: '#skills', label: 'Skills', icon: 'uil-file-alt' },
+    { href: '#experience', label: 'Experience', icon: 'uil-briefcase-alt' },
     { href: '#degree', label: 'Academics', icon: 'uil-graduation-cap' },
-    { href: '#certifications', label: 'Certifications', icon: 'uil-award' },
     { href: '#projects', label: 'Projects', icon: 'uil-briefcase' },
+    { href: '#certifications', label: 'Certifications', icon: 'uil-award' },
     { href: '#contact', label: 'Contact', icon: 'uil-message' },
 ];
 
